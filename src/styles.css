@@ -76,10 +76,53 @@ body {
   display: none;
 }
 
+/* Navbar Search Form */
+.navbar .search-form {
+  position: absolute;
+  top: 100%;
+  right: 7%;
+  width: 50rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  background-color: #000000;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.3s;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1.5px solid rgba(229, 126, 58, 0.916);
+}
+
+.navbar .search-form.active {
+  transform: scaleY(1);
+}
+
+.navbar .search-form input {
+  height: 100%;
+  flex: 1;
+  padding: 1rem;
+  font-size: 1.5rem;
+  color: var(--bg);
+}
+.navbar .search-form label {
+  height: 100%;
+  width: 4rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  border-left: 1.5px solid rgba(229, 126, 58, 0.916);
+}
+/* Navbar Search End */
+
 /* Hero Section */
 .hero {
   min-height: 100vh;
-  background-image: url('/src/img/header-img.jpg');
+  background-image: url('img/header-img.jpg');
   display: flex;
   align-items: center;
   background-repeat: no-repeat;
@@ -136,12 +179,12 @@ body {
 .about, .menu, .contact {
   padding: 8rem 7% 1.4rem;
 }
-.about h2, .menu h2, .contact h2 {
+.about h2, .menu h2, .contact h2, .products h2 {
   text-align: center;
   font-size: 2.8rem;
   margin-bottom: 3rem;
 }
-.about h2 span, .menu h2 span, .contact h2 span {
+.about h2 span, .menu h2 span, .contact h2 span, .products h2 span {
   color: var(--primary);
 }
 .about p {
@@ -193,15 +236,16 @@ body {
   background-color: var(--secondary);
   margin: 6rem auto;
 }
-#about-semangka p, #about-semangka a {
-  color: #f1ece9;
-  font-size: 1.6rem;
-  line-height: 1.6;
-  width: 50%;
-  text-align: end;
-}
 #about-semangka a {
-  color: #e7d1c6;
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: var(--primary);
+  color:#f1ece9;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  text-align: center;
+  line-height: 1.2;
+  font-size: 1.6rem;
 }
 #about-semangka img {
   width: 10rem;
@@ -231,6 +275,7 @@ body {
 .menu p {
   max-width: 30rem;
   text-align: center;
+  padding-bottom: 8rem;
   margin-bottom: 3rem;
   margin: auto;
   color: #e8d6cc;
@@ -259,6 +304,85 @@ body {
   margin: 1rem auto 0.5rem;
   color: #e8d6cc;
 }
+
+/* Products Section */
+.products p {
+  max-width: 30rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  padding-bottom: 6rem;
+  margin: auto;
+  color: #e8d6cc;
+  font-size: 1.4rem;
+  line-height: 1.6;
+}
+.products .row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 1.5rem;
+  margin-top: 4rem;
+  padding: 0 5rem;
+}
+.products .product-card {
+  border: 1px solid #666;
+  padding: 3rem;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.products .product-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.products .product-icons a {
+  width: 4rem;
+  height: 4rem;
+  color: #fff;
+  border: 1px solid #666;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.products .product-icons a:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+  border: 1px solid var(--primary);
+  background-color: var(--primary);
+}
+.products .product-image {
+  padding: 1rem 0;
+}
+.products .product-image img {
+  height: 25rem;
+}
+.products .product-content h3 {
+  font-size: 2rem;
+  color: #e8d6cc;
+}
+.products .product-stars {
+  font-size: 1.5rem;
+  padding: 0.8rem;
+  color: var(--primary);
+}
+.products .product-stars .star-full {
+  margin: 0 0.2rem;
+  fill: var(--primary);
+}
+.products .product-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+.products .product-price span {
+  text-decoration: line-through;
+  font-weight: lighter;
+  font-size: 1rem;
+}
+
 
 /* Contact Section */
 .contact p {
@@ -397,6 +521,11 @@ footer .credit a {
   }
   .navbar .navbar-nav a:hover::after {
     transform: scaleX(0.2);
+  }
+
+  .navbar .search-form {
+    width: 70%;
+    right: 7%;
   }
 
   .about .row {
