@@ -26,8 +26,8 @@
 
         <div class="navbar-extra">
             <a href="#" id="search-button"><i data-feather="search"></i></a>
-            <a href="#" id="shop-cart"><i data-feather="shopping-cart"></i></a>
-            <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+            <a href="#" id="shopping-cart-button"><i data-feather="shopping-cart"></i></a>
+            <button id="hamburger-menu"><i data-feather="menu"></i></button>
         </div>
 
         <!-- Search Form Start -->
@@ -36,6 +36,34 @@
             <label for="search-box"><i data-feather="search"></i></label>
         </div>
         <!-- Search Form End -->
+        <!-- Shopping Cart Start -->
+         <div class="shopping-cart">
+            <div class="cart-item">
+               <img src="/src/img/products/p1.png" alt="Product 1">
+               <div class="item-details">
+                 <h3>Product 1</h3>
+                 <div class="item-price">$29.9</div>
+               </div>
+               <i data-feather="trash-2" class="remove-item"></i>
+            </div>
+            <div class="cart-item">
+               <img src="/src/img/products/p1.png" alt="Product 1">
+               <div class="item-details">
+                 <h3>Product 1</h3>
+                 <div class="item-price">$29.9</div>
+               </div>
+               <i data-feather="trash-2" class="remove-item"></i>
+            </div>
+            <div class="cart-item">
+               <img src="/src/img/products/p1.png" alt="Product 1">
+               <div class="item-details">
+                 <h3>Product 1</h3>
+                 <div class="item-price">$29.9</div>
+               </div>
+               <i data-feather="trash-2" class="remove-item"></i>
+            </div>
+         </div>
+        <!-- Shopping Cart End -->
 
     </nav> 
      <!-- Navbar end -->
@@ -86,32 +114,32 @@
         <p>Discover our carefully curated selection of coffee beverages and delicious treats.</p>
         <div class="row">
             <div class="menu-card">
-                <img src="/src/img/menu/menu-1.jpg" alt="Caffe latte" class="menu-card-img">
+                <img src="src/img/menu/menu-1.jpg" alt="Caffe latte" class="menu-card-img">
                 <h3 class="menu-card-title">- Croissant -</h3>
-                <p class="menu-card-price">$3.50</p>          
+                <p class="menu-card-price">$3.50</p>        
             </div>
             <div class="menu-card">
-                <img src="/src/img/menu/menu-2.png" alt="Americano Caffe" class="menu-card-img">
+                <img src="src/img/menu/menu-2.png" alt="Americano Caffe" class="menu-card-img">
                 <h3 class="menu-card-title">- Caffè Americano -</h3>
                 <p class="menu-card-price">$5.00</p>
             </div>
             <div class="menu-card">
-                <img src="/src/img/menu/menu-3.png" alt="Cappuccino" class="menu-card-img">
+                <img src="src/img/menu/menu-3.png" alt="Cappuccino" class="menu-card-img">
                 <h3 class="menu-card-title">- Cappuccino -</h3>
                 <p class="menu-card-price">$5.50</p>
             </div>
             <div class="menu-card">
-                <img src="/src/img/menu/menu-4.png" alt="Matcha Latte" class="menu-card-img">
+                <img src="src/img/menu/menu-4.png" alt="Matcha Latte" class="menu-card-img">
                 <h3 class="menu-card-title">- Matcha Latte -</h3>
                 <p class="menu-card-price">$4.50</p>
             </div>
             <div class="menu-card">
-                <img src="/src/img/menu/menu-5.jpg" alt="Cappuccino" class="menu-card-img">
+                <img src="src/img/menu/menu-5.jpg" alt="Cappuccino" class="menu-card-img">
                 <h3 class="menu-card-title">- Iced Tea -</h3>
                 <p class="menu-card-price">$2.50</p>
             </div>
             <div class="menu-card">    
-                <img src="/src/img/menu/menu-6.jpg" alt="Matcha Latte" class="menu-card-img">
+                <img src="src/img/menu/menu-6.jpg" alt="Matcha Latte" class="menu-card-img">
                 <h3 class="menu-card-title">- Rissole -</h3>
                 <p class="menu-card-price">$5.50</p>
             </div>
@@ -123,12 +151,12 @@
      <!-- Product Section start -->
      <section class="products" id="products">
         <h2>Our<span> Products</span></h2>
-        <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Ridiculus sit nisl laoreet facilisis aliquet. Potenti dignissim litora eget montes rhoncus sapien neque urna. Cursus libero sapien integer magnis ligula lobortis quam ut.</p>
+        <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Ridiculus sit nisl laoreet facilisis aliquet. Potenti dignissim litora eget montes rhoncus sapien neque urna. Cursus libero sapien integer magnis ligula lobortis ut.</p>
         <div class="row">
             <div class="product-card">
                 <div class="product-icons">
                     <a href="#"><i data-feather="shopping-cart"></i></a>
-                    <a href="#"><i data-feather="eye"></i></a>
+                    <a href="#" class="item-detail-button"><i data-feather="eye" alt="View Product"></i></a>
                 </div>
                 <div class="product-image">
                     <img src="src/img/products/p1.png" alt="Dusk Coffee Mug" class="product-card-img">
@@ -136,74 +164,74 @@
                 <div class="product-content">
                     <h3 class="product-card-title">- Arabica Beans -</h3>
                     <div class="product-stars">
-                        <i data-feather="star"></i>
-                        <i data-feather="star"></i>
-                        <i data-feather="star"></i>
-                        <i data-feather="star"></i>
-                        <i data-feather="star"></i>
+                        <i data-feather="star" class="star-full"></i>
+                        <i data-feather="star" class="star-full"></i>
+                        <i data-feather="star" class="star-full"></i>
+                        <i data-feather="star" class="star-full"></i>
+                        <i data-feather="star" class="star-full"></i>
                     </div>
-                    <div class="product-price">$14.9 <span>$17.9</span></div>
+                    <div class="product-price">$29.9 <span>$41</span></div>
                 </div>
             </div>    
             <div class="product-card">
                 <div class="product-icons">
                     <a href="#"><i data-feather="shopping-cart"></i></a>
                     <!-- <a href="#"><i data-feather="heart"></i></a> -->
-                    <a href="#"><i data-feather="eye"></i></a>
+                    <a href="#" class="item-detail-button"><i data-feather="eye" alt="View Product"></i></a>
                 </div>
                 <div class="product-image">
                     <img src="src/img/products/p2.png" alt="Dusk Coffee Mug" class="product-card-img">
                 </div>
                 <div class="product-content">
-                    <h3 class="product-card-title">- Dusk Coffee Arabica Beans -</h3>
+                    <h3 class="product-card-title">- Excelsa Beans -</h3>
                     <div class="product-stars">
                         <i data-feather="star" class="star-full"></i>
                         <i data-feather="star" class="star-full"></i>
                         <i data-feather="star" class="star-full"></i>
-                        <i data-feather="star" class="star-full"></i>
+                        <i data-feather="star"></i>
                         <i data-feather="star"></i>
                     </div>
-                    <div class="product-price">$14.9 <span>$17.9</span></div>
+                    <div class="product-price">$17.9 <span>$25.9</span></div>
                 </div>
             </div>    
             <div class="product-card">
                 <div class="product-icons">
                     <a href="#"><i data-feather="shopping-cart"></i></a>
-                    <a href="#"><i data-feather="eye"></i></a>
+                    <a href="#" class="item-detail-button"><i data-feather="eye" alt="View Product"></i></a>
                 </div>
                 <div class="product-image">
                     <img src="src/img/products/p3.png" alt="Dusk Coffee Mug" class="product-card-img">
                 </div>
                 <div class="product-content">
-                    <h3 class="product-card-title">- Dusk Coffee Arabica Beans -</h3>
+                    <h3 class="product-card-title">- Robusta Beans -</h3>
                     <div class="product-stars">
-                        <i data-feather="star"></i>
-                        <i data-feather="star"></i>
-                        <i data-feather="star"></i>
-                        <i data-feather="star"></i>
+                        <i data-feather="star" class="star-full"></i>
+                        <i data-feather="star" class="star-full"></i>
+                        <i data-feather="star" class="star-full"></i>
+                        <i data-feather="star" class="star-full"></i>
                         <i data-feather="star"></i>
                     </div>
-                    <div class="product-price">$14.9 <span>$17.9</span></div>
+                    <div class="product-price">$21.9 <span>$29.9</span></div>
                 </div>
             </div>    
             <div class="product-card">
                 <div class="product-icons">
                     <a href="#"><i data-feather="shopping-cart"></i></a>
-                    <a href="#"><i data-feather="eye"></i></a>
+                    <a href="#" class="item-detail-button"><i data-feather="eye" alt="View Product"></i></a>
                 </div>
                 <div class="product-image">
                     <img src="src/img/products/p4.png" alt="Dusk Coffee Mug" class="product-card-img">
                 </div>
                 <div class="product-content">
-                    <h3 class="product-card-title">- Dusk Coffee Arabica Beans -</h3>
+                    <h3 class="product-card-title">- Liberica Beans -</h3>
                     <div class="product-stars">
-                        <i data-feather="star"></i>
-                        <i data-feather="star"></i>
-                        <i data-feather="star"></i>
+                        <i data-feather="star" class="star-full"></i>
+                        <i data-feather="star" class="star-full"></i>
+                        <i data-feather="star" class="star-full"></i>
                         <i data-feather="star"></i>
                         <i data-feather="star"></i>
                     </div>
-                    <div class="product-price">$14.9 <span>$17.9</span></div>
+                    <div class="product-price">$25.9 <span>$37.9</span></div>
                 </div>
             </div>    
         </div>
@@ -252,6 +280,30 @@
             <p>&copy; 2026 DuskCoffee. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Modal Box Item Detail Start -->
+     <div class="modal" id="item-detail-modal">
+        <div class="modal-container">
+            <a href="#"><i data-feather="x" class="close-icon"></i></a>
+            <div class="modal-content">
+                <img src="/src/img/products/p1.png" alt="Product 1">
+                <div class="product-content">
+                    <h3>Product 1</h3>
+                    <p>lore ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <div class="product-stars">
+                        <i data-feather="star" class="star-full"></i>
+                        <i data-feather="star" class="star-full"></i>
+                        <i data-feather="star" class="star-full"></i>
+                        <i data-feather="star" class="star-full"></i>
+                        <i data-feather="star"></i>
+                    </div>
+                    <div class="product-price">$21.9 <span>$29.9</span></div>
+                    <a href="#"><i data-feather="shopping-cart"></i> <span>Add to Cart</span></a>
+                </div>
+            </div>
+        </div>
+     </div>
+     <!-- Modal Box Item Detail End -->
 
     <script>
         feather.replace();
