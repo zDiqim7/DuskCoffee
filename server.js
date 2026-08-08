@@ -1,38 +1,25 @@
+// 1. Import Module Utama
 const express = require('express');
-const mysql = require('mysql2');
+const cors = require('cors');
+require('dotenv').config(); // Baca variabel rahasia dari file .env
+
 const app = express();
-const PORT = 3306;
+const PORT = process.env.PORT || 3000;
 
-// 1. Setup Koneksi ke MySQL
-const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',        
-    password: '71826quantum#sql',
-    database: 'duskcoffee_db'
-});
+// 2. Middleware
+app.use(cors());
+app.use(express.json()); // Supaya Express bisa membaca data JSON dari frontend/fetch
+app.use(express.static('public')); // Menyajikan HTML, CSS, Gambar dari folder public
 
-db.connect((err) => {
-    if (err) {
-        console.error('Waduh, gagal konek ke MySQL wok: ' + err.stack);
-        return;
-    }
-    console.log('Mantap wok! Berhasil konek ke MySQL dengan id ' + db.threadId);
-});
+// 3. Import Routes (Panggil file jalur API dari folder src)
+const authRoutes = require('./src/routes/auth');
+const productRoutes = require('./src/routes/products');
 
-// 2. Bikin API Route buat ngambil data kopi
-app.get('/api/products', (req, res) => {
-    const sqlQuery = "SELECT * FROM products";
-    
-    db.query(sqlQuery, (err, results) => {
-        if (err) {
-            return res.status(500).json({ error: err.message });
-        }
-        // Kirim data hasil SELECT dari MySQL ke browser berbentuk JSON
-        res.json(results);
-    });
-});
+// 4. Gunakan Routes (Set URL utamanya)
+app.use('/api/auth', authRoutes);         // Hasilnya: /api/auth/login, /api/auth/register
+app.use('/api/products', productRoutes);   // Hasilnya: /api/products (ambil menu kopi)
 
-// 3. Jalankan Server Express
+// 5. Jalankan Server
 app.listen(PORT, () => {
-    console.log(`Server Express-chan udah jalan di http://localhost:${PORT}`);
+  console.log(`Server DuskCoffee running on http://localhost:${PORT}`);
 });

@@ -65,3 +65,13 @@ window.onclick = (e) => {
     itemDetailModal.style.display = 'none';
   }
 }
+
+
+// Fetching buat Buka halaman -> JS langsung minta data produk ke Express
+fetch('/api/products')
+  .then(response => response.json())
+  .then(products => {
+    console.log('Data Kopi dari DB:', products);
+    // Di sini kamu bisa pakai .innerHTML buat nampilin daftar kopinya ke HTML
+  })
+  .catch(err => console.error('Gagal ambil data:', err));

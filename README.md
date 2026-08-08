@@ -2,32 +2,23 @@
 
 Simple, static coffee shop website built as a practice project. This repo is a work-in-progress — currently a static build using HTML, CSS, and a bit of JavaScript. I plan to keep updating and making it more complex as I learn new tools and techniques.
 
-## Table of contents
-- [About](#about)
-- [Current features](#current-features)
-- [Tech stack](#tech-stack)
-- [Preview / How to run locally](#preview--how-to-run-locally)
-- [Roadmap / Future plans](#roadmap--future-plans)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
-
 ## About
 DuskCoffee is a small practice project to build a simple website for a coffee shop. The goal is to practice front-end fundamentals (layout, styling, responsive design, small JS interactions) and to create something that can be shipped and iterated on.
 
 ## Current features
-- Static pages: Home, Menu, About, Contact (simple structure using plain HTML files)
+- Static pages: Home, Menu, About, Contact, Sign in and Sign up, Menu and products (simple structure using plain HTML files)
 - Responsive layout with CSS (works on mobile and desktop)
 - Visual styling: custom colors, typography, and layout components
 - Small JavaScript enhancements (e.g., mobile navigation toggle, basic UI interactions)
-- Local assets (images/icons) included
+- Local assets (public/img/menu /products) included
 - Ready for static hosting (e.g., GitHub Pages)
 
 ## Tech stack
-- HTML (structure)
+- HTML (structure, pages)
 - CSS (styling, responsive design)
 - JavaScript (small interactive bits)
-(Approximately: HTML 52%, CSS 43%, JS 5%)
+- Express.js
+- MySQL 
 
 ## Preview / How to run locally
 1. Clone the repo:
@@ -37,13 +28,14 @@ DuskCoffee is a small practice project to build a simple website for a coffee sh
    - python -m http.server 8000
 3. The preview is currently a static file preview. Note: if the project later becomes dynamic (React, backend), previewing will change to running a dev server or visiting a deployed URL — that's expected.
 
-## Roadmap / Future plans
+## Future plans
 This project is part of my practice — it's ongoing and will be extended as I learn more. Possible next steps:
-- Add more pages and improve accessibility and responsiveness
-- Move to a modern front-end framework (React, Vue, or Svelte) for component-driven UI
-- Integrate a backend (Node.js, Express, or similar) and a database for dynamic content (menu management, orders)
+- Add more pages such as menu and products has it own page, auth login logic, checkout page, etc and improve accessibility and responsiveness
+- level up it into fullstack web app built without frontend frameworks
+- Move hardcoded data to local database using MySQL 
+- Integrate a backend (Node.js, Express, or similar) and a database for dynamic content (menu management, checkout, products, user)
 - Add build tooling (Webpack/Vite), linting, and tests
-- Deploy to a hosting provider and add CI/CD
+- Deploy to a hosting provider, i also need to learn about how to deploy fullstack web, Render.com maybe
 
 Note: when I integrate frameworks or a backend, how you preview the project will change (from opening files to running a dev server or visiting a deployed site). That's fine — it will be part of the learning process.
 

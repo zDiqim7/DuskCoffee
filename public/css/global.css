@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+
+/* =========================================================
+   DUSK COFFEE COLOR PALETTE (CSS Variables & Theme Switcher)
+   ========================================================= */
+
+/* 1. Default Theme: Dark Coffee / Orange Dark */
+:root {
+  --bg-color: #1a1c1b;         /* Dark base DuskCoffee */
+  --card-bg: #1f1a17;          /* Dark warm surface */
+  --primary-color: #b25523;    /* DuskCoffee warm orange */
+  --primary-hover: #ff7a18;    /* Lighter orange hover */
+  --accent-color: #D9B08C;     /* Cream accent */
+  --text-main: #ffffff;        /* White text */
+  --text-muted: #d7c4b3;       /* Warm muted cream text */
+  --border-color: #3a322d;     /* Dark brown border */
+  --border-focus: #ff7a18;     /* Orange highlight border */
+  --input-bg: #121212;         /* Deep dark for inputs */
+  --google-btn-bg: #29221e;    /* Card-matching google btn */
+  --google-btn-border: #4f4136;
+}
+
+/* 2. Light Theme: Orange White (Siap pakai kalau diswitch) */
+body.light-theme {
+  --bg-color: #f8f4ee;
+  --card-bg: #fff8f2;
+  --primary-color: #d65716;
+  --primary-hover: #ff7a20;
+  --accent-color: #f2c08a;
+  --text-main: #2b2723;
+  --text-muted: #7b6d61;
+  --border-color: #d3b19a;
+  --border-focus: #d65716;
+  --input-bg: #ffffff;
+  --google-btn-bg: #ffffff;
+  --google-btn-border: #d3b19a;
+}
+
+/* Global Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Fredoka', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 10px;
+  position: relative;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Theme Toggle Button (Atas Kanan Container) */
+.theme-toggle-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.theme-toggle-btn:hover {
+  border-color: var(--primary-color);
+}
+
+/* Auth Card Container */
+.auth-container {
+  width: 100%;
+  max-width: 420px;
+  background: var(--card-bg);
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border-color);
+  margin-bottom: 24px;
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.auth-header h2 {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+
+.auth-header p {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* Form Styling */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent-color);
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px 14px;
+  background-color: var(--input-bg);
+  border: 1.5px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-main);
+  outline: none;
+}
+
+.form-group input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(255, 122, 24, 0.15);
+}
+
+/* Fix dropdown option color in dark mode */
+.form-group select option {
+  background-color: var(--card-bg);
+  color: var(--text-main);
+}
+
+/* Password Eye Toggle */
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper input {
+  padding-right: 40px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+}
+
+.toggle-password:hover {
+  color: var(--primary-color);
+}
+
+.toggle-password svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+/* Checkbox & Options */
+.form-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: var(--text-muted);
+  user-select: none;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary-color);
+  cursor: pointer;
+}
+
+/* Links & Buttons */
+a {
+  color: var(--accent-color);
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+/* Divider & Google Button */
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 13px;
+  margin: 18px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.divider span {
+  padding: 0 10px;
+}
+
+.btn-google {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: var(--google-btn-bg);
+  color: var(--text-main);
+  border: 1px solid var(--google-btn-border);
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn-google:hover {
+  border-color: var(--primary-hover);
+}
+
+.auth-footer-text {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 20px;
+  color: var(--text-muted);
+}
+
+/* Footer Page */
+footer {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+footer span {
+  font-weight: 500;
+  color: var(--accent-color);
+}

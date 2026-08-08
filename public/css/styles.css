@@ -124,7 +124,7 @@ body {
   cursor: pointer;
   border-left: 1.5px solid rgba(229, 126, 58, 0.916);
 }
-
+/* 
 .shopping-cart {
   position: absolute;
   top: 100%;
@@ -167,8 +167,152 @@ body {
 }
 .shopping-cart .remove-item:hover {
   color: var(--primary);
+} */
+
+/* Sidebar Container Utama */
+.shopping-cart {
+  position: fixed;
+  top: 100%;
+  right: -100%;
+  height: calc(100vh - 8rem);
+  width: 35rem;
+  background-color: #13131a; /* Dark background */
+  border-left: 1px solid rgba(211, 173, 127, 0.2);
+  padding: 1.5rem;
+  transition: 0.4s ease;
+  display: flex;
+  flex-direction: column; /* Mengatur susunan ke bawah */
+  justify-content: space-between;
+  z-index: 9999;
 }
 
+.shopping-cart.active {
+  right: 0;
+}
+
+/* Area Item yang Bisa Di-scroll */
+.cart-items-container {
+  flex: 1; /* Mengambil seluruh sisa ruang kosong di atas */
+  overflow-y: auto; /* Otomatis muncul scrollbar kalau item banyak */
+  padding-right: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Custom Scrollbar biar estetik (Orange DuskCoffee) */
+.cart-items-container::-webkit-scrollbar {
+  width: 6px;
+}
+.cart-items-container::-webkit-scrollbar-thumb {
+  background-color: #d3ad7f;
+  border-radius: 10px;
+}
+
+/* Placeholder Pas Keranjang Kosong */
+.empty-cart-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #a1a1a1;
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.empty-cart-placeholder .empty-icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 1rem;
+  color: #d3ad7f; /* Accent Orange/Cokelat */
+}
+
+.empty-cart-placeholder p {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.empty-cart-placeholder span {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+/* Item Card di dalam Cart */
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cart-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.cart-item .item-details h3 {
+  font-size: 1.4rem;
+  color: #fff;
+}
+
+.cart-item .item-details .item-price {
+  font-size: 1.2rem;
+  color: #d3ad7f; /* Harga warna orange/gold */
+}
+
+.cart-item .remove-item {
+  margin-left: auto;
+  cursor: pointer;
+  color: #ff4d4d;
+  transition: 0.2s;
+}
+
+.cart-item .remove-item:hover {
+  transform: scale(1.2);
+}
+
+/* Section Bottom / Footer Cart (Nempel di Bawah) */
+.cart-footer {
+  border-top: 2px solid rgba(211, 173, 127, 0.3);
+  padding-top: 1.5rem;
+  background-color: #13131a;
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.cart-total #cart-total-price {
+  color: #d3ad7f;
+}
+
+/* Tombol Checkout */
+.btn-checkout {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+  background-color: #d3ad7f;
+  color: #13131a;
+  font-weight: bold;
+  font-size: 1.4rem;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn-checkout:hover {
+  background-color: #e5be8f;
+  letter-spacing: 1px;
+}
 
 /* Navbar Search End */
 
@@ -356,6 +500,13 @@ body {
   font-size: 1.5rem;
   margin: 1rem auto 0.5rem;
   color: #e8d6cc;
+}
+.menu .see-more-items a {
+  color: #e2dede;
+  background-color: #b25523;
+  border: 2px solid #f0e8de;
+  border-radius: 1rem;
+  padding: 1rem;
 }
 
 /* Products Section */
