@@ -1,16 +1,25 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../config/db'); // Panggil koneksi DB tunggal yang SAMA!
+const db = require('../config/db');
 
-// Endpoint Ambil Kopi
-router.get('/', (req, res) => {
-  // Nyentuh Tabel 'products' di duskcoffee_db yang SAMA
-  const query = 'SELECT * FROM products';
-  
-  db.query(query, (err, results) => {
-    if (err) return res.status(500).json({ error: err.message });
-    res.json(results);
-  });
+// Endpoint GET /api/products/menu
+router.get('/menu', async (req, res) => {
+  try {
+    const [rows] = await db.query('SELECT * FROM menu');
+    res.json(rows);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Endpoint GET /api/products/beans
+router.get('/bean', async (req, respone) => {
+  try {
+    const [rows] = await db.query('SELECT * FROM products');
+    res.json(rows);
+  } catch (error) {
+    res.status(500).json({ error:message });
+  }
 });
 
 module.exports = router;
