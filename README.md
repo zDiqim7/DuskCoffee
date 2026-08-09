@@ -3,49 +3,75 @@
 Simple, static coffee shop website built as a practice project. This repo is a work-in-progress — currently a static build using HTML, CSS, and a bit of JavaScript. I plan to keep updating and making it more complex as I learn new tools and techniques.
 
 ## About
+
 DuskCoffee is a small practice project to build a simple website for a coffee shop. The goal is to practice front-end fundamentals (layout, styling, responsive design, small JS interactions) and to create something that can be shipped and iterated on.
 
 ## Current features
-- Static pages: Home, Menu, About, Contact, Sign in and Sign up, Menu and products (simple structure using plain HTML files)
-- Responsive layout with CSS (works on mobile and desktop)
-- Visual styling: custom colors, typography, and layout components
-- Small JavaScript enhancements (e.g., mobile navigation toggle, basic UI interactions)
-- Local assets (public/img/menu /products) included
-- Ready for static hosting (e.g., GitHub Pages)
+
+- **Fullstack Architecture:** Decoupled static frontend (`public/`) served via Express backend (`src/`).
+- **Dynamic Catalog:** Menu (food & beverages) and Products (coffee beans & merch) rendered dynamically via Express REST API and MariaDB.
+- **Custom Authentication UI:** Single-page Sign In & Sign Up interface ready for JWT auth integration.
+- **Interactive Shopping Cart:** Slide-out cart panel with empty state placeholder, scrollable item list, and sticky checkout footer.
+- **Responsive & Modular Design:** Dark coffee-themed UI built with custom CSS variables (`:root`), Flexbox/Grid, and Feather Icons.
 
 ## Tech stack
-- HTML (structure, pages)
-- CSS (styling, responsive design)
-- JavaScript (small interactive bits)
-- Express.js
-- MySQL 
 
-## Preview / How to run locally
-1. Clone the repo:
-   git clone https://github.com/zDiqim7/DuskCoffee.git
-2. Open `index.html` in your browser, or use a local server:
-   - VS Code Live Server extension, or
-   - python -m http.server 8000
-3. The preview is currently a static file preview. Note: if the project later becomes dynamic (React, backend), previewing will change to running a dev server or visiting a deployed URL — that's expected.
+**Frontend:**
+- HTML5 & CSS3 (Custom Variables, Flexbox, Grid)
+- Vanilla JavaScript (Fetch API, DOM Manipulation, Event Delegation)
+- Feather Icons
 
-## Future plans
-This project is part of my practice — it's ongoing and will be extended as I learn more. Possible next steps:
-- Add more pages such as menu and products has it own page, auth login logic, checkout page, etc and improve accessibility and responsiveness
-- level up it into fullstack web app built without frontend frameworks
-- Move hardcoded data to local database using MySQL 
-- Integrate a backend (Node.js, Express, or similar) and a database for dynamic content (menu management, checkout, products, user)
-- Add build tooling (Webpack/Vite), linting, and tests
-- Deploy to a hosting provider, i also need to learn about how to deploy fullstack web, Render.com maybe
+**Backend & Database:**
+- Node.js & Express.js (REST API, Static File Serving)
+- MariaDB / MySQL (using `mysql2/promise` connection pool)
+- `bcryptjs` (Password Hashing)
+- `jsonwebtoken` (JWT Authentication)
+- `dotenv` (Environment Variable Management)
+
+---
+
+## How to run locally
+# Prerequisites
+- install node.js(v18 or higher)
+- install and run MariaDB or MySQL locally
+
+1. clone the repo:
+   `git clone [https://github.com/zDiqim7/DuskCoffee.git](https://github.com/zDiqim7/DuskCoffee.git)
+   cd DuskCoffee`
+2. install depedencies
+3. configure environment variables
+4. database setup
+5. start the development server:
+   `npm run dev`
+   `npm start`      
+6. open in browser: Navigate to http://localhost:3000 (Express serves index.html from public/ automatically).
+
+---
+
+## Future plans/roadmap
+
+[x] Migrate static layout into Express static server structure.
+
+[x] Set up local MariaDB schema for menu and products.
+
+[x] Build dynamic API routes (GET /api/products/menu & /beans).
+
+[ ] Connect auth.html frontend forms to Express auth API with JWT token handling.
+
+[ ] Implement localStorage basket state for persistent shopping cart item management.
+
+[ ] Deploy Fullstack App (Frontend static via Render/Vercel, Express API via Render/Railway, Database via Aiven/Railway
 
 Note: when I integrate frameworks or a backend, how you preview the project will change (from opening files to running a dev server or visiting a deployed site). That's fine — it will be part of the learning process.
 
 ## Contributing
+
 This is primarily a personal practice repo, but contributions and suggestions are welcome. If you want to help:
 - Fork and open a PR with a short description of changes
 - Keep changes focused and explain why they help the learning goals
 
 ## License
-MIT — see LICENSE file (or add one if you want the MIT text here).
+Distributed under the MIT License. See LICENSE for more information.
 
 ## Contact
 Author: zDiqim7
