@@ -1,11 +1,10 @@
-// src/config/db.js
 const mysql = require('mysql2');
 
 const db = mysql.createConnection({
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || '71826quantum#sql',
-  database: process.env.DB_NAME || 'duskcoffee_db' // 1 DB untuk semua tabel!
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME
 });
 
 db.connect((err) => {
@@ -16,4 +15,4 @@ db.connect((err) => {
   console.log('Connected to MariaDB/MySQL duskcoffee_db!');
 });
 
-module.exports = db; // Ekspor objek koneksinya
+module.exports = db;
