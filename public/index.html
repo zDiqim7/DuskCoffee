@@ -36,35 +36,25 @@
             <label for="search-box"><i data-feather="search"></i></label>
         </div>
         <!-- Search Form End -->
-        <!-- Shopping Cart Start -->
-         <div class="shopping-cart">
-            <div class="cart-item">
-               <img src="src/img/products/p1.png" alt="Product 1">
-               <div class="item-details">
-                 <h3>Product 1</h3>
-                 <div class="item-price">$29.9</div>
-               </div>
-               <i data-feather="trash-2" class="remove-item"></i>
-            </div>
-            <div class="cart-item">
-               <img src="src/img/products/p1.png" alt="Product 1">
-               <div class="item-details">
-                 <h3>Product 1</h3>
-                 <div class="item-price">$29.9</div>
-               </div>
-               <i data-feather="trash-2" class="remove-item"></i>
-            </div>
-            <div class="cart-item">
-               <img src="src/img/products/p1.png" alt="Product 1">
-               <div class="item-details">
-                 <h3>Product 1</h3>
-                 <div class="item-price">$29.9</div>
-               </div>
-               <i data-feather="trash-2" class="remove-item"></i>
-            </div>
-         </div>
-        <!-- Shopping Cart End -->
 
+        <!-- Shopping Cart Start -->
+        <div class="shopping-cart" id="shopping-cart">
+            <div class="cart-items-container" id="cart-items-container">
+                <div class="empty-cart-placeholder">
+                    <i data-feather="shopping-bag" class="empty-icon"></i>
+                    <p>Your cart is empty</p>
+                    <span>Add some coffee magic! ☕</span>
+                </div>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cart-total-price">$0.00</span>
+                </div>
+                <a href="/cart.html" class="btn btn-checkout">Checkout Now</a>
+            </div>
+        </div>
+        <!-- Shopping Cart End -->
     </nav> 
      <!-- Navbar end -->
 
@@ -73,7 +63,7 @@
         <main class="content">
             <h1>Welcome to Dusk <span>Coffee</span></h1>
             <p>Experience the perfect blend of flavor and ambiance at Dusk Coffee. Our expertly crafted beverages and cozy atmosphere make us the ideal destination for coffee lovers. Whether you're looking for a quick pick-me-up or a relaxing spot to unwind, Dusk Coffee has you covered.</p>
-            <a href="#" class="cta">Order Now</a>
+            <a href="./menu.html" class="cta">Order Now</a>
         </main>
      </section>
      <!-- Hero section end -->
@@ -84,7 +74,7 @@
             <h2><span>About</span> Us</h2>
             <div class="row">
                 <div class="about-img">
-                    <img src="src/img/about-us.jpg" alt="About us">                
+                    <img src="/public/img/about-us.jpg" alt="About us">                
                 </div>
                 <div class="content">
                     <h3>Our Story</h3>
@@ -93,18 +83,27 @@
             </div>
             <div class="row">
                 <div class="about-img">
-                    <img src="src/img/about-us-2.jpg" alt="About us (Our story)">                
+                    <img src="/public/img/about-us-2.jpg" alt="Biar rame aja">                
                 </div>
                 <div class="content">
                     <h3>Our Values</h3>
                     <p>At Dusk Coffee, we value quality, community, and sustainability. We source our beans from ethical suppliers and strive to minimize our environmental impact while delivering exceptional coffee experiences.</p>
                 </div>
             </div>
+            <div class="row">
+                <div class="about-img">
+                    <img src="/public/img/about-us-3.jpg" alt="Biar rame aja">                
+                </div>
+                <div class="content">
+                    <h3>Lorem Ipsum</h3>
+                    <p>At Dusk Coffee, great coffee is only part of the story. We partner with ethical suppliers, care for the planet, and build genuine connections with our community — one cup at a time.</p>
+                </div>
+            </div>
         </main>
      </section>
      <div id="about-semangka">
-        <a href="#mission-value" class="btn-link">Explore More</a>
-        <img src="src/img/semangka.jpg" alt="Semangka">
+        <a href="🍉" class="btn-link">Watermelon</a>
+        <img src="/public/img/semangka.png" alt="🍉">
      </div>
      <!-- About Section end -->
 
@@ -115,48 +114,48 @@
         <div class="row">
             <div class="menu-card">
                 <a href="menu-product.html">
-                 <img src="src/img/menu/menu-1.jpg" alt="Caffe latte" class="menu-card-img">
+                 <img src="./img/menu/croissant.jpg" alt="Caffe latte" class="menu-card-img">
                 </a>
                 <h3 class="menu-card-title">- Croissant -</h3>
                 <p class="menu-card-price">$3.50</p>        
             </div>
             <div class="menu-card">
                 <a href="menu-product.html">
-                 <img src="src/img/menu/menu-2.png" alt="Americano Caffe" class="menu-card-img">
+                 <img src="./img/menu/americano.png" alt="Americano Caffe" class="menu-card-img">
                 </a>
-                <h3 class="menu-card-title">- Caffè Americano -</h3>
+                <h3 class="menu-card-title">- Americano -</h3>
                 <p class="menu-card-price">$5.00</p>
             </div>
             <div class="menu-card">
                 <a href="menu-product.html">
-                 <img src="src/img/menu/menu-3.png" alt="Cappuccino" class="menu-card-img">
+                 <img src="./img/menu/cappuccino.png" alt="Cappuccino" class="menu-card-img">
                 </a>
                 <h3 class="menu-card-title">- Cappuccino -</h3>
                 <p class="menu-card-price">$5.50</p>
             </div>
             <div class="menu-card">
                 <a href="menu-product.html">
-                 <img src="src/img/menu/menu-4.png" alt="Matcha Latte" class="menu-card-img">
+                 <img src="./img/menu/matcha-latte.png" alt="Matcha Latte" class="menu-card-img">
                 </a>
                 <h3 class="menu-card-title">- Matcha Latte -</h3>
                 <p class="menu-card-price">$4.50</p>
             </div>
             <div class="menu-card">
                 <a href="menu-product.html" >
-                 <img src="src/img/menu/menu-5.jpg" alt="Cappuccino" class="menu-card-img">
+                 <img src="./img/menu/iced-tea.jpg" alt="Iced Tea" class="menu-card-img">
                 </a>
                 <h3 class="menu-card-title">- Iced Tea -</h3>
                 <p class="menu-card-price">$2.50</p>
             </div>
             <div class="menu-card">    
                 <a href="menu-product.html">
-                 <img src="src/img/menu/menu-6.jpg" alt="Matcha Latte" class="menu-card-img">
+                 <img src="./img/menu/rissole.jpg" alt="Rissole" class="menu-card-img">
                 </a>
                 <h3 class="menu-card-title">- Rissole -</h3>
                 <p class="menu-card-price">$5.50</p>
             </div>
         </div>
-        <p class="see-more-items"><a href="menu-product.html">See More items</a></p>
+        <p class="see-more-items"><a href="/public/menu.html">See More Menu</a></p>
     </section>
      <!-- Menu Section end --> 
 
@@ -167,14 +166,14 @@
         <div class="row">
             <div class="product-card">
                 <div class="product-icons">
-                    <a href="#"><i data-feather="shopping-cart"></i></a>
+                    <a href="#" class="btn-add-to-cart"><i data-feather="shopping-cart"></i></a>
                     <a href="#" class="item-detail-button"><i data-feather="eye" alt="View Product"></i></a>
                 </div>
                 <div class="product-image">
-                    <img src="src/img/products/p1.png" alt="Dusk Coffee Mug" class="product-card-img">
+                    <img src="./img/products/p1.png" alt="Dusk Coffee Mug" class="product-card-img">
                 </div>
                 <div class="product-content">
-                    <h3 class="product-card-title">- Arabica Beans -</h3>
+                    <h3 class="product-card-title"> Arabica Beans </h3>
                     <div class="product-stars">
                         <i data-feather="star" class="star-full"></i>
                         <i data-feather="star" class="star-full"></i>
@@ -187,15 +186,15 @@
             </div>    
             <div class="product-card">
                 <div class="product-icons">
-                    <a href="#"><i data-feather="shopping-cart"></i></a>
+                    <a href="#" class="btn-add-to-cart"><i data-feather="shopping-cart"></i></a>
                     <!-- <a href="#"><i data-feather="heart"></i></a> -->
                     <a href="#" class="item-detail-button"><i data-feather="eye" alt="View Product"></i></a>
                 </div>
                 <div class="product-image">
-                    <img src="src/img/products/p2.png" alt="Dusk Coffee Mug" class="product-card-img">
+                    <img src="./img/products/p2.png" alt="Dusk Coffee Mug" class="product-card-img">
                 </div>
                 <div class="product-content">
-                    <h3 class="product-card-title">- Excelsa Beans -</h3>
+                    <h3 class="product-card-title"> Excelsa Beans </h3>
                     <div class="product-stars">
                         <i data-feather="star" class="star-full"></i>
                         <i data-feather="star" class="star-full"></i>
@@ -208,14 +207,14 @@
             </div>    
             <div class="product-card">
                 <div class="product-icons">
-                    <a href="#"><i data-feather="shopping-cart"></i></a>
+                    <a href="#" class="btn-add-to-cart"><i data-feather="shopping-cart"></i></a>
                     <a href="#" class="item-detail-button"><i data-feather="eye" alt="View Product"></i></a>
                 </div>
                 <div class="product-image">
-                    <img src="src/img/products/p3.png" alt="Dusk Coffee Mug" class="product-card-img">
+                    <img src="./img/products/p3.png" alt="Dusk Coffee Mug" class="product-card-img">
                 </div>
                 <div class="product-content">
-                    <h3 class="product-card-title">- Robusta Beans -</h3>
+                    <h3 class="product-card-title"> Robusta Beans </h3>
                     <div class="product-stars">
                         <i data-feather="star" class="star-full"></i>
                         <i data-feather="star" class="star-full"></i>
@@ -228,14 +227,14 @@
             </div>    
             <div class="product-card">
                 <div class="product-icons">
-                    <a href="#"><i data-feather="shopping-cart"></i></a>
+                    <a href="#" class="btn-add-to-cart"><i data-feather="shopping-cart"></i></a>
                     <a href="#" class="item-detail-button"><i data-feather="eye" alt="View Product"></i></a>
                 </div>
                 <div class="product-image">
-                    <img src="src/img/products/p4.png" alt="Dusk Coffee Mug" class="product-card-img">
+                    <img src="./img/products/p4.png" alt="Dusk Coffee Mug" class="product-card-img">
                 </div>
                 <div class="product-content">
-                    <h3 class="product-card-title">- Liberica Beans -</h3>
+                    <h3 class="product-card-title"> Liberica Beans </h3>
                     <div class="product-stars">
                         <i data-feather="star" class="star-full"></i>
                         <i data-feather="star" class="star-full"></i>
@@ -245,7 +244,8 @@
                     </div>
                     <div class="product-price">$25.9 <span>$37.9</span></div>
                 </div>
-            </div>    
+            </div>
+            <p class="see-more-items"><a href="/public/products.html">More Product!</a></p>
         </div>
      </section>
      <!-- Product Section end -->
@@ -256,20 +256,33 @@
         <p>Have questions or feedback? We'd love to hear from you!</p>
         <div class="row">
            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253825.43284056312!2d106.74020446973095!3d-6.260781083563682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f2d148fbe713%3A0x6e667d52ebedf5a9!2sJakarta%20Timur%2C%20Kota%20Jakarta%20Timur%2C%20Daerah%20Khusus%20Ibukota%20Jakarta!5e0!3m2!1sid!2sid!4v1779517092419!5m2!1sid!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
-           <form action="">
+           <form id="contact-form" action="">
              <div class="input-group">
                 <i data-feather="user"></i>
-                <input type="text" placeholder="Your Name">
+                <input type="text" placeholder="Your Name" required>
              </div>
              <div class="input-group">
                 <i data-feather="mail"></i>
-                <input type="text" placeholder="Your Email">
+                <input type="text" placeholder="Your Email" required>
              </div>
              <div class="input-group">
-                <i data-feather="phone"></i>
-                <input type="text" placeholder="Your Phone">
+                <i data-feather="star"></i>
+                <div class="select-wrapper">
+                   <select name="rating" required>
+                       <option value="" disabled selected>Rate your experience</option>
+                       <option value="sucks"> Sucks ⭐</option>
+                       <option value="bad"> Bad ⭐⭐</option>
+                       <option value="ok.."> Ok.. ⭐⭐⭐</option>
+                       <option value="nice"> Nice ⭐⭐⭐⭐</option>
+                       <option value="cool"> Cool ⭐⭐⭐⭐⭐</option>
+                   </select>
+                </div>
              </div>
-             <button type="submit" class="btn">Send Message</button>
+             <div class="input-group textarea-group">
+                <i data-feather="message-square"></i>
+                <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+             </div>
+             <button type="submit" class="btn contact-submit"><i data-feather="send"></i> Send Feedback</button>
            </form>
         </div>
       </section>
@@ -298,7 +311,7 @@
         <div class="modal-container">
             <a href="#"><i data-feather="x" class="close-icon"></i></a>
             <div class="modal-content">
-                <img src="src/img/products/p1.png" alt="Product 1">
+                <img src="./img/products/p3.png" alt="Product 1">
                 <div class="product-content">
                     <h3>Product 1</h3>
                     <p>lore ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -310,16 +323,16 @@
                         <i data-feather="star"></i>
                     </div>
                     <div class="product-price">$21.9 <span>$29.9</span></div>
-                    <a href="#"><i data-feather="shopping-cart"></i> <span>Add to Cart</span></a>
+                    <a href="#" class="add-cart-action"><i data-feather="shopping-cart"></i> <span>Add to Cart</span></a>
                 </div>
             </div>
         </div>
      </div>
      <!-- Modal Box Item Detail End -->
-
     <script>
         feather.replace();
     </script>
-    <script src="js/script.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/contact.js"></script>
 </body>
 </html>

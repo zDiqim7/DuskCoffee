@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <title>Full Menu - Dusk Coffee</title>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        .page-header {
+            padding: 12rem 7% 3rem;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(26,28,27,0.9) 0%, rgba(18,18,18,1) 100%);
+        }
+        .page-header h1 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 3.5rem;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+        .page-header h1 span {
+            color: var(--primary, #b25523);
+        }
+        .page-header p {
+            font-family: 'Montserrat', sans-serif;
+            color: #d7c4b3;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .full-section {
+            padding: 5rem 7%;
+            background-color: #1a1c1b;
+        }
+        .full-section h2 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.6rem;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        .full-section h2 span {
+            color: var(--primary, #b25523);
+        }
+        .full-section > p {
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            color: #d7c4b3;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+        }
+        .menu-full-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 2rem;
+        }
+        .menu-full-card {
+            background-color: #1f1a17;
+            border: 1px solid #3a322d;
+            border-radius: 12px;
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+        .menu-full-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary, #b25523);
+            box-shadow: 0 8px 20px rgba(178, 85, 35, 0.2);
+        }
+        .menu-card-img-wrapper {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        .menu-card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .menu-full-card:hover .menu-card-img-wrapper img {
+            transform: scale(1.08);
+        }
+        .menu-full-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.4rem;
+            color: #fff;
+            margin-bottom: 0.4rem;
+        }
+        .menu-full-desc {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.88rem;
+            color: #d7c4b3;
+            line-height: 1.4;
+            margin-bottom: 1.2rem;
+            flex-grow: 1;
+        }
+        .menu-full-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 0.8rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .menu-full-price {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.3rem;
+            color: #fff;
+            font-weight: 600;
+        }
+        .btn-quick-add {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--primary, #b25523);
+            color: #fff;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+        .btn-quick-add:hover {
+            background-color: #ff7a18;
+            transform: scale(1.1);
+        }
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2.5rem; }
+            .full-section { padding: 4rem 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar start -->
+    <nav class="navbar">
+        <a href="/index.html" class="navbar-logo"><span>Dusk</span>Coffee.</a>
+
+        <div class="navbar-nav">
+            <a href="/index.html#home">Home</a>
+            <a href="/index.html#about">About Us</a>
+            <a href="/menu.html" class="active">Menu</a>
+            <a href="/products.html" class="btn">Products</a>
+            <a href="/index.html#contact">Contact</a>
+        </div>
+
+        <div class="navbar-extra">
+            <a href="#" id="search-button"><i data-feather="search"></i></a>
+            <a href="#" id="shopping-cart-button"><i data-feather="shopping-cart"></i></a>
+            <button id="hamburger-menu"><i data-feather="menu"></i></button>
+        </div>
+
+        <!-- Search Form Start -->
+        <div class="search-form">
+            <input type="search" id="search-box" placeholder="Search menu...">
+            <label for="search-box"><i data-feather="search"></i></label>
+        </div>
+
+        <!-- Shopping Cart Sidebar -->
+        <div class="shopping-cart" id="shopping-cart">
+            <div class="cart-items-container" id="cart-items-container">
+                <div class="empty-cart-placeholder">
+                  <i data-feather="shopping-bag" class="empty-icon"></i>
+                  <p>Your cart is empty</p>
+                  <span>Add some coffee magic! ☕</span>
+                </div>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                  <span>Total:</span>
+                  <span id="cart-total-price">$0.00</span>
+                </div>
+                <a href="/cart.html" class="btn btn-checkout">Checkout Now</a>
+            </div>
+        </div>
+    </nav> 
+    <!-- Navbar end -->
+
+    <header class="page-header">
+        <h1>Our Fresh <span>Brews & Bites</span></h1>
+        <p>Handcrafted espresso, artisan teas, and freshly baked treats prepared daily with passion.</p>
+    </header>
+
+    <!-- Menu Section start -->
+    <section class="full-section" id="menu">
+        <h2>Our Full <span>Menu</span></h2>
+        <p>Explore our complete selection of fresh coffee drinks and bakery items.</p>
+        
+        <!-- Container ini di-inject via JS atau nampilin static awal -->
+        <div class="menu-full-grid" id="menu-container">
+            <div class="menu-full-card">
+                <div class="menu-card-img-wrapper">
+                    <img src="/img/menu/croissant.jpg" alt="Croissant">
+                </div>
+                <h3 class="menu-full-title">Croissant</h3>
+                <p class="menu-full-desc">Flaky, buttery French pastry baked golden crisp daily in our kitchen.</p>
+                <div class="menu-full-footer">
+                    <span class="menu-full-price">$3.50</span>
+                    <button class="btn-quick-add" title="Quick add to cart"><i data-feather="plus"></i></button>
+                </div>
+            </div>
+
+            <div class="menu-full-card">
+                <div class="menu-card-img-wrapper">
+                    <img src="/img/menu/americano.jpg" alt="Caffè Americano">
+                </div>
+                <h3 class="menu-full-title">Caffè Americano</h3>
+                <p class="menu-full-desc">Rich espresso shots diluted with hot water for a bold, smooth flavor.</p>
+                <div class="menu-full-footer">
+                    <span class="menu-full-price">$5.00</span>
+                    <button class="btn-quick-add" title="Quick add to cart"><i data-feather="plus"></i></button>
+                </div>
+            </div>
+
+            <div class="menu-full-card">
+                <div class="menu-card-img-wrapper">
+                    <img src="/img/menu/cappuccino.jpg" alt="Cappuccino">
+                </div>
+                <h3 class="menu-full-title">Cappuccino</h3>
+                <p class="menu-full-desc">Equal parts dark espresso, steamed milk, and thick velvety microfoam.</p>
+                <div class="menu-full-footer">
+                    <span class="menu-full-price">$5.50</span>
+                    <button class="btn-quick-add" title="Quick add to cart"><i data-feather="plus"></i></button>
+                </div>
+            </div>
+
+            <div class="menu-full-card">
+                <div class="menu-card-img-wrapper">
+                    <img src="/img/menu/matcha-latte.jpg" alt="Matcha Latte">
+                </div>
+                <h3 class="menu-full-title">Matcha Latte</h3>
+                <p class="menu-full-desc">Premium ceremonial Uji matcha whisked with silky steamed milk.</p>
+                <div class="menu-full-footer">
+                    <span class="menu-full-price">$4.50</span>
+                    <button class="btn-quick-add" title="Quick add to cart"><i data-feather="plus"></i></button>
+                </div>
+            </div>
+
+            <div class="menu-full-card">
+                <div class="menu-card-img-wrapper">
+                    <img src="/img/menu/iced-tea.jpg" alt="Iced Tea">
+                </div>
+                <h3 class="menu-full-title">Iced Tea</h3>
+                <p class="menu-full-desc">Refreshing artisanal house-brewed black tea served over crystal ice.</p>
+                <div class="menu-full-footer">
+                    <span class="menu-full-price">$2.50</span>
+                    <button class="btn-quick-add" title="Quick add to cart"><i data-feather="plus"></i></button>
+                </div>
+            </div>
+
+            <div class="menu-full-card">
+                <div class="menu-card-img-wrapper">
+                    <img src="/img/menu/rissole.jpg" alt="Rissole">
+                </div>
+                <h3 class="menu-full-title">Rissole</h3>
+                <p class="menu-full-desc">Savory fried pastry stuffed with creamy chicken, veggies, and herbs.</p>
+                <div class="menu-full-footer">
+                    <span class="menu-full-price">$5.50</span>
+                    <button class="btn-quick-add" title="Quick add to cart"><i data-feather="plus"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer start -->
+    <footer>
+        <div class="socials">
+            <a href="#"><i data-feather="facebook"></i></a>
+            <a href="#"><i data-feather="twitter"></i></a>
+            <a href="#"><i data-feather="instagram"></i></a>
+        </div>
+        <div class="links">
+            <a href="/index.html#home">Home</a>
+            <a href="/index.html#about">About Us</a>
+            <a href="/menu.html">Menu</a>
+            <a href="/products.html">Products</a>
+            <a href="/index.html#contact">Contact</a>
+        </div>
+        <div class="credit">
+            <p>Created by <a href="https://github.com/zDiqim7" target="_blank">Diqi</a>.</p>
+            <p>&copy; 2026 DuskCoffee. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        feather.replace();
+    </script>
+    <script src="./js/script.js"></script>
+</body>
+</html>
