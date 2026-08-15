@@ -31,20 +31,15 @@ DuskCoffee is a small practice project to build a simple website for a coffee sh
 ---
 
 ## How to run locally
-# Prerequisites
-- install node.js(v18 or higher)
-- install and run MariaDB or MySQL locally
+nah u dont need to, just wait me complete this **** backend so i can deploy on resend.com
 
-1. clone the repo:
-   `git clone [https://github.com/zDiqim7/DuskCoffee.git](https://github.com/zDiqim7/DuskCoffee.git)
-   cd DuskCoffee`
-2. install depedencies
-3. configure environment variables
-4. database setup
-5. start the development server:
-   `npm run dev`
-   `npm start`      
-6. open in browser: Navigate to http://localhost:3000 (Express serves index.html from public/ automatically).
+but u can still see the preview oh the html page, just change/add the name of the file html `https://zdiqim7.github.io/DuskCoffee/public/name.html`
+
+or just copy (click if it can) this url and paste to ur browser
+> https://zdiqim7.github.io/DuskCoffee/public/index.html
+> https://zdiqim7.github.io/DuskCoffee/public/menu.html
+> https://zdiqim7.github.io/DuskCoffee/public/products.html
+> https://zdiqim7.github.io/DuskCoffee/public/auth.html
 
 ---
 
