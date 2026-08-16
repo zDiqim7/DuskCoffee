@@ -6,6 +6,13 @@ Simple, static coffee shop website built as a practice project. This repo is a w
 
 DuskCoffee is a small practice project to build a simple website for a coffee shop. The goal is to practice front-end fundamentals (layout, styling, responsive design, small JS interactions) and to create something that can be shipped and iterated on.
 
+Inspired by `WPU (Web Programming Unpas)`, or as known in the community as Mr. Sandhika Galih.
+
+Check out this playlist: 
+ > https://youtu.be/kvyJPvJKTBI?si=1Ja-VCTyIJdvF-WC 
+
+I followed his project series, but since there are no new updates/videos and it stopped at the payment gateway feature, I decided to take this project further.
+
 ## Current features
 
 - **Fullstack Architecture:** Decoupled static frontend (`public/`) served via Express backend (`src/`).
@@ -20,6 +27,7 @@ DuskCoffee is a small practice project to build a simple website for a coffee sh
 - HTML5 & CSS3 (Custom Variables, Flexbox, Grid)
 - Vanilla JavaScript (Fetch API, DOM Manipulation, Event Delegation)
 - Feather Icons
+- Alpine js
 
 **Backend & Database:**
 - Node.js & Express.js (REST API, Static File Serving)
