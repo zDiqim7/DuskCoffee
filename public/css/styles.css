@@ -67,9 +67,29 @@ body {
 .navbar .navbar-extra a {
   color: #fff;
   margin: 0 0.5rem;
+  position: relative;
 }
 .navbar .navbar-extra a:hover {
   color: var(--primary);
+}
+
+.cart-count-badge {
+  position: absolute;
+  top: -0.6rem;
+  right: -0.75rem;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  padding: 0 0.35rem;
+  border-radius: 999px;
+  background: #ff4d4d;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  box-shadow: 0 0 0 2px rgba(26, 28, 27, 0.9);
 }
 
 #hamburger-menu {
@@ -125,19 +145,19 @@ body {
   border-left: 1.5px solid rgba(229, 126, 58, 0.916);
 }
 
-/* Sidebar Container Utama */
+/* Sidebar Main container */
 .shopping-cart {
   position: fixed;
   top: 0;
   right: -100%;
   height: 100vh;
   width: 35rem;
-  background-color: #13131a; /* Dark background */
+  background-color: #13131a;
   border-left: 1px solid rgba(211, 173, 127, 0.2);
   padding: 1.5rem;
   transition: 0.4s ease;
   display: flex;
-  flex-direction: column; /* Mengatur susunan ke bawah */
+  flex-direction: column;
   justify-content: space-between;
   z-index: 9999;
 }
@@ -154,7 +174,7 @@ body {
   margin-bottom: 1rem;
 }
 
-/* Custom Scrollbar biar estetik (Orange DuskCoffee) */
+/* Custom Scrollbar (Orange DuskCoffee) */
 .cart-items-container::-webkit-scrollbar {
   width: 6px;
 }
@@ -179,7 +199,7 @@ body {
   width: 50px;
   height: 50px;
   margin-bottom: 1rem;
-  color: #d3ad7f; /* Accent Orange/Cokelat */
+  color: #d3ad7f;
 }
 
 .empty-cart-placeholder p {
@@ -193,7 +213,6 @@ body {
   margin-top: 0.5rem;
 }
 
-/* Item Card di dalam Cart */
 .cart-item {
   display: flex;
   align-items: center;
@@ -250,7 +269,7 @@ body {
   color: #d3ad7f;
 }
 
-/* Tombol Checkout */
+/* Checkout Button */
 .btn-checkout {
   display: block;
   width: 100%;
@@ -275,7 +294,7 @@ body {
 /* Hero Section */
 .hero {
   min-height: 100vh;
-  background-image: url('/public/img/header-img.jpg');
+  background-image: url('../img/header.jpg');
   display: flex;
   align-items: center;
   background-repeat: no-repeat;
