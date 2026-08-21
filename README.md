@@ -31,7 +31,7 @@ I followed his project series, but since there are no new updates/videos and it 
 
 **Backend & Database:**
 - Node.js & Express.js (REST API, Static File Serving)
-- MariaDB / MySQL (using `mysql2/promise` connection pool)
+- MariaDB / MySQL (using `mysql2/promise` connection pool, 1 schema file)
 - `bcryptjs` (Password Hashing)
 - `jsonwebtoken` (JWT Authentication)
 - `dotenv` (Environment Variable Management)
