@@ -1,0 +1,18 @@
+[
+  { "id": 1, "name": "A Slice Cake", "description": "Delicious moist chocolate cake slice.", "price": 4.00, "image_path": "img/menu/a-slice-cake.jpg", "category": "pastry" },
+  { "id": 2, "name": "A Strawberry Cake", "description": "Fresh strawberry cream cake.", "price": 4.50, "image_path": "img/menu/a-strawberry-cake.jpg", "category": "pastry" },
+  { "id": 3, "name": "Caffè Americano", "description": "Espresso topped with hot water.", "price": 5.00, "image_path": "img/menu/americano.png", "category": "beverage" },
+  { "id": 4, "name": "Bagel", "description": "A chewy, toasted ring-shaped bread roll, perfect plain or with spread.", "price": 4.10, "image_path": "img/menu/bagel.jpg", "category": "food" },
+  { "id": 5, "name": "Cappuccino", "description": "Equal parts espresso, milk, and foam.", "price": 5.50, "image_path": "img/menu/cappuccino.png", "category": "beverage" },
+  { "id": 6, "name": "Chicken Burger", "description": "Crispy chicken patty burger.", "price": 6.50, "image_path": "img/menu/chicken-burger.jpg", "category": "food" },
+  { "id": 7, "name": "Cold Brew", "description": "Steeped cold coffee served on ice.", "price": 5.00, "image_path": "img/menu/cold-brew.jpg", "category": "beverage" },
+  { "id": 8, "name": "Cookie", "description": "Freshly baked butter cookie with crisp edges and a soft center.", "price": 4.00, "image_path": "img/menu/cookie.jpg", "category": "pastry" },
+  { "id": 9, "name": "Croissant", "description": "Flaky, buttery baked croissant.", "price": 3.50, "image_path": "img/menu/croissant.jpg", "category": "pastry" },
+  { "id": 10, "name": "Decaf", "description": "Full-flavored brewed coffee with almost all of the caffeine naturally removed.", "price": 6.20, "image_path": "img/menu/decaf.jpg", "category": "beverage" },
+  { "id": 11, "name": "Hot Chocolate", "description": "Rich dark chocolate with marshmallows.", "price": 4.50, "image_path": "img/menu/hot-chocolate.jpg", "category": "beverage" },
+  { "id": 12, "name": "Iced Tea", "description": "Refreshing iced tea with lemon.", "price": 2.50, "image_path": "img/menu/iced-tea.jpg", "category": "beverage" },
+  { "id": 13, "name": "Matcha Latte", "description": "Ceremonial matcha with steamed milk.", "price": 4.50, "image_path": "img/menu/matcha-latte.png", "category": "beverage" },
+  { "id": 14, "name": "Pancake", "description": "Fluffy pancakes with maple syrup.", "price": 5.00, "image_path": "img/menu/pancake.jpg", "category": "food" },
+  { "id": 15, "name": "Rissole", "description": "Crispy savory pastry pockets.", "price": 5.50, "image_path": "img/menu/rissole.jpg", "category": "pastry" },
+  { "id": 16, "name": "Salad", "description": "Fresh mix of crisp greens, colorful vegetables, and a light dressing.", "price": 7.00, "image_path": "img/menu/salad.jpg", "category": "food" }
+]
