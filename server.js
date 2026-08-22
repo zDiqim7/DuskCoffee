@@ -15,10 +15,12 @@ app.use('/api/products', require('./src/routes/products')); // Calling endpoint 
 // Import Routes (Panggil file jalur API dari folder src)
 const authRoutes = require('./src/routes/auth');
 const productRoutes = require('./src/routes/products');
+const ordersRoutes = require('./src/routes/orders');
 
 // Use Routes (Set URL utamanya)
 app.use('/api/auth', authRoutes);         // Hasilnya: /api/auth/login, /api/auth/register
 app.use('/api/products', productRoutes);   // Hasilnya: /api/products (ambil menu kopi)
+app.use('/api/orders', ordersRoutes);     // Hasilnya: /api/orders (simpan pesanan)
 
 // RUN Server Express-Kawai ><
 app.listen(PORT, () => {
