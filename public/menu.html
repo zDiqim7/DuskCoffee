@@ -157,7 +157,10 @@
 
         <div class="navbar-extra">
             <a href="#" id="search-button"><i data-feather="search"></i></a>
-            <a href="#" id="shopping-cart-button"><i data-feather="shopping-cart"></i></a>
+            <a href="#" id="shopping-cart-button" aria-label="Shopping cart">
+                <i data-feather="shopping-cart"></i>
+                <span class="cart-count-badge" style="display: none;">0</span>
+            </a>
             <button id="hamburger-menu"><i data-feather="menu"></i></button>
         </div>
 
@@ -181,7 +184,7 @@
                   <span>Total:</span>
                   <span id="cart-total-price">$0.00</span>
                 </div>
-                <a href="/cart.html" class="btn btn-checkout">Checkout Now</a>
+                <a href="/checkout.html" class="btn btn-checkout">Checkout Now</a>
             </div>
         </div>
     </nav> 
@@ -197,79 +200,10 @@
         <h2>Our Full <span>Menu</span></h2>
         <p>Explore our complete selection of fresh coffee drinks and bakery items.</p>
         
-        <!-- Container ini di-inject via JS atau nampilin static awal -->
+        <!-- Container will be populated dynamically by JS from /api/products/menu -->
         <div class="menu-full-grid" id="menu-container">
-            <div class="menu-full-card">
-                <div class="menu-card-img-wrapper">
-                    <img src="/img/menu/croissant.jpg" alt="Croissant">
-                </div>
-                <h3 class="menu-full-title">Croissant</h3>
-                <p class="menu-full-desc">Flaky, buttery French pastry baked golden crisp daily in our kitchen.</p>
-                <div class="menu-full-footer">
-                    <span class="menu-full-price">$3.50</span>
-                    <button class="btn-quick-add" title="Quick add to cart"><i data-feather="plus"></i></button>
-                </div>
-            </div>
-
-            <div class="menu-full-card">
-                <div class="menu-card-img-wrapper">
-                    <img src="/img/menu/americano.jpg" alt="Caffè Americano">
-                </div>
-                <h3 class="menu-full-title">Caffè Americano</h3>
-                <p class="menu-full-desc">Rich espresso shots diluted with hot water for a bold, smooth flavor.</p>
-                <div class="menu-full-footer">
-                    <span class="menu-full-price">$5.00</span>
-                    <button class="btn-quick-add" title="Quick add to cart"><i data-feather="plus"></i></button>
-                </div>
-            </div>
-
-            <div class="menu-full-card">
-                <div class="menu-card-img-wrapper">
-                    <img src="/img/menu/cappuccino.jpg" alt="Cappuccino">
-                </div>
-                <h3 class="menu-full-title">Cappuccino</h3>
-                <p class="menu-full-desc">Equal parts dark espresso, steamed milk, and thick velvety microfoam.</p>
-                <div class="menu-full-footer">
-                    <span class="menu-full-price">$5.50</span>
-                    <button class="btn-quick-add" title="Quick add to cart"><i data-feather="plus"></i></button>
-                </div>
-            </div>
-
-            <div class="menu-full-card">
-                <div class="menu-card-img-wrapper">
-                    <img src="/img/menu/matcha-latte.jpg" alt="Matcha Latte">
-                </div>
-                <h3 class="menu-full-title">Matcha Latte</h3>
-                <p class="menu-full-desc">Premium ceremonial Uji matcha whisked with silky steamed milk.</p>
-                <div class="menu-full-footer">
-                    <span class="menu-full-price">$4.50</span>
-                    <button class="btn-quick-add" title="Quick add to cart"><i data-feather="plus"></i></button>
-                </div>
-            </div>
-
-            <div class="menu-full-card">
-                <div class="menu-card-img-wrapper">
-                    <img src="/img/menu/iced-tea.jpg" alt="Iced Tea">
-                </div>
-                <h3 class="menu-full-title">Iced Tea</h3>
-                <p class="menu-full-desc">Refreshing artisanal house-brewed black tea served over crystal ice.</p>
-                <div class="menu-full-footer">
-                    <span class="menu-full-price">$2.50</span>
-                    <button class="btn-quick-add" title="Quick add to cart"><i data-feather="plus"></i></button>
-                </div>
-            </div>
-
-            <div class="menu-full-card">
-                <div class="menu-card-img-wrapper">
-                    <img src="/img/menu/rissole.jpg" alt="Rissole">
-                </div>
-                <h3 class="menu-full-title">Rissole</h3>
-                <p class="menu-full-desc">Savory fried pastry stuffed with creamy chicken, veggies, and herbs.</p>
-                <div class="menu-full-footer">
-                    <span class="menu-full-price">$5.50</span>
-                    <button class="btn-quick-add" title="Quick add to cart"><i data-feather="plus"></i></button>
-                </div>
-            </div>
+            <!-- loading placeholder -->
+            <div style="color:var(--muted); text-align:center; padding:2rem 0;">Loading menu…</div>
         </div>
     </section>
 
