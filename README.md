@@ -27,7 +27,6 @@ I followed his project series, but since there are no new updates/videos and it 
 - HTML5 & CSS3 (Custom Variables, Flexbox, Grid)
 - Vanilla JavaScript (Fetch API, DOM Manipulation, Event Delegation)
 - Feather Icons
-- Alpine js
 
 **Backend & Database:**
 - Node.js & Express.js (REST API, Static File Serving)
@@ -45,9 +44,12 @@ but u can still see the preview oh the html page, just change/add the name of th
 
 or just copy (click if it can) this url and paste to ur browser
 > https://zdiqim7.github.io/DuskCoffee/public/index.html
+
 > https://zdiqim7.github.io/DuskCoffee/public/menu.html
+
 > https://zdiqim7.github.io/DuskCoffee/public/products.html
-> https://zdiqim7.github.io/DuskCoffee/public/auth.html
+
+> https://zdiqim7.github.io/DuskCoffee/public/checkout.html
 
 ---
 
