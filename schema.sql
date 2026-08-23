@@ -1,3 +1,4 @@
+SET FOREIGN_KEY_CHECKS = 0;
 CREATE DATABASE IF NOT EXISTS duskcoffee_db;
 USE duskcoffee_db;
 
@@ -80,6 +81,8 @@ DROP TABLE IF EXISTS orders;
 CREATE TABLE orders (
   id INT PRIMARY KEY AUTO_INCREMENT,
   customer_name VARCHAR(150),
+  customer_email VARCHAR(150),
+  customer_phone VARCHAR(50),
   phone VARCHAR(50),
   address TEXT,
   notes TEXT,
@@ -89,6 +92,8 @@ CREATE TABLE orders (
   delivery_fee DECIMAL(10,2) NOT NULL DEFAULT 0,
   tax DECIMAL(10,2) NOT NULL DEFAULT 0,
   total DECIMAL(10,2) NOT NULL DEFAULT 0,
+  total_amount DECIMAL(10,2) NOT NULL DEFAULT 0,
+  status ENUM('pending', 'paid', 'completed', 'cancelled') DEFAULT 'pending',
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -102,3 +107,5 @@ CREATE TABLE order_items (
   quantity INT NOT NULL DEFAULT 1,
   FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE
 );
+
+SET FOREIGN_KEY_CHECKS = 1;
