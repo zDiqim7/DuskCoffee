@@ -1,6 +1,4 @@
-// ===================================================
 // 1. NAVBAR, SEARCH, & SHOPPING CART TOGGLE (SAFE GUARDED)
-// ===================================================
 
 const navbarNav = document.querySelector('.navbar-nav');
 const hamburgerMenu = document.querySelector('#hamburger-menu');
@@ -50,10 +48,7 @@ document.addEventListener('click', function (e) {
     }
 });
 
-
-// ===================================================
 // 2. MODAL BOX (EVENT DELEGATION UNTUK DATA DINAMIS)
-// ===================================================
 
 const itemDetailModal = document.querySelector('#item-detail-modal');
 const closeModalIcon = document.querySelector('.modal .close-icon');
@@ -83,28 +78,63 @@ window.onclick = (e) => {
 };
 
 
-// ===================================================
 // 3. FETCHING & RENDER DATA DINAMIS DARI EXPRESS / MARIADB
-// ===================================================
+
+function normalizeProductFilter(filterName) {
+    const value = String(filterName || '').trim().toLowerCase();
+    if (!value || value === 'all' || value === 'all menu' || value === 'all beans') return 'all';
+    if (value.includes('arabica')) return 'arabica';
+    if (value.includes('robusta')) return 'robusta';
+    if (value.includes('liberica')) return 'liberica';
+    if (value.includes('excelsa')) return 'excelsa';
+    return value;
+}
+
+function bindProductFilters() {
+    const filterChips = document.querySelectorAll('.filter-chip');
+    if (!filterChips.length) return;
+
+    filterChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            filterChips.forEach(item => item.classList.toggle('active', item === chip));
+            const selectedFilter = chip.dataset.filter || chip.textContent.trim();
+            loadProductsByFilter(selectedFilter);
+        });
+    });
+}
+
+async function loadProductsByFilter(filterName = 'all') {
+    const productsContainer = document.querySelector('#products-container');
+    if (!productsContainer) return;
+
+    const normalizedFilter = normalizeProductFilter(filterName);
+    const query = normalizedFilter === 'all' ? '' : `?category=${encodeURIComponent(normalizedFilter)}`;
+
+    try {
+        const response = await fetch(`/api/products/beans${query}`);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+        const products = await response.json();
+        renderProducts(products, productsContainer, normalizedFilter);
+    } catch (error) {
+        console.error('Failed to load products:', error);
+        productsContainer.innerHTML = '<p class="empty-state">Unable to load products right now.</p>';
+    }
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     const menuContainer = document.querySelector('#menu-container');
     const productsContainer = document.querySelector('#products-container');
 
-    // Jika sedang berada di menu.html
+    // Jika sedang berada di menu.html — coba ambil dari API dulu, fallback ke JSON lokal bila gagal
     if (menuContainer) {
-        fetch('/api/products/menu')
-            .then(res => res.json())
-            .then(data => renderMenu(data, menuContainer))
-            .catch(err => console.error('Gagal load menu:', err));
+        fetchMenu(menuContainer);
     }
 
     // Jika sedang berada di products.html
     if (productsContainer) {
-        fetch('/api/products/beans')
-            .then(res => res.json())
-            .then(data => renderProducts(data, productsContainer))
-            .catch(err => console.error('Gagal load products:', err));
+        bindProductFilters();
+        loadProductsByFilter('all');
     }
 
     initCart();
@@ -131,6 +161,25 @@ function renderMenu(items, container) {
     if (window.feather) feather.replace();
 }
 
+// Try live API first, fall back to a static JSON file for development
+function fetchMenu(container) {
+    fetch('/api/products/menu')
+        .then(res => {
+            if (!res.ok) throw new Error('API unavailable');
+            return res.json();
+        })
+        .then(data => {
+            renderMenu(data, container);
+        })
+        .catch(() => {
+            // fallback to bundled JSON so dev can work without DB
+            fetch('/data/menu-fallback.json')
+                .then(r => r.json())
+                .then(data => renderMenu(data, container))
+                .catch(err => console.error('Failed to load fallback menu:', err));
+        });
+}
+
 // Shopping cart dynamic helper
 const CART_STORAGE_KEY = 'duskCoffeeCart';
 let cartItems = [];
@@ -145,7 +194,7 @@ function loadCart() {
         const savedCart = localStorage.getItem(CART_STORAGE_KEY);
         return savedCart ? JSON.parse(savedCart) : [];
     } catch (err) {
-        console.error('Gagal membaca cart dari localStorage:', err);
+        console.error('Failed to read cart from localStorage:', err);
         return [];
     }
 }
@@ -154,7 +203,7 @@ function saveCart() {
     try {
         localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cartItems));
     } catch (err) {
-        console.error('Gagal menyimpan cart ke localStorage:', err);
+        console.error('Failed to save cart to localStorage:', err);
     }
 }
 
@@ -162,11 +211,29 @@ function formatCurrency(amount) {
     return `$${amount.toFixed(2)}`;
 }
 
+function renderCartBadge() {
+    const cartButton = document.querySelector('#shopping-cart-button');
+    if (!cartButton) return;
+
+    const totalQty = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+    let badge = cartButton.querySelector('.cart-count-badge');
+
+    if (!badge) {
+        badge = document.createElement('span');
+        badge.className = 'cart-count-badge';
+        cartButton.appendChild(badge);
+    }
+
+    badge.textContent = totalQty > 99 ? '99+' : String(totalQty);
+    badge.style.display = totalQty > 0 ? 'flex' : 'none';
+}
+
 function renderCart() {
     const cartItemsContainer = document.querySelector('#cart-items-container');
     const cartTotalPriceEl = document.querySelector('#cart-total-price');
 
     if (!cartItemsContainer || !cartTotalPriceEl) {
+        renderCartBadge();
         return;
     }
 
@@ -194,6 +261,7 @@ function renderCart() {
 
     const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
     cartTotalPriceEl.textContent = formatCurrency(total);
+    renderCartBadge();
     if (window.feather) feather.replace();
 }
 
@@ -259,16 +327,39 @@ function handleCartAction(event) {
 document.addEventListener('click', handleCartAction);
 
 // Helper Render Products (Biji Kopi/Merch)
-function renderProducts(items, container) {
-    if (!items || items.length === 0) return;
-    container.innerHTML = items.map(item => `
+function getProductImageSrc(imagePath) {
+    if (!imagePath) return '/img/products/default-product.jpg';
+    const normalized = String(imagePath).trim();
+    if (normalized.startsWith('http://') || normalized.startsWith('https://')) return normalized;
+    return `/${normalized.replace(/^\/+/, '')}`;
+}
+
+function renderProducts(items, container, filterName = 'all') {
+    if (!items || items.length === 0) {
+        container.innerHTML = '<p class="empty-state">No products found for this filter.</p>';
+        return;
+    }
+
+    const filteredItems = filterName === 'all'
+        ? items
+        : items.filter(item => {
+            const haystack = `${item.name || ''} ${item.category || ''}`.toLowerCase();
+            return haystack.includes(filterName.toLowerCase());
+        });
+
+    if (!filteredItems.length) {
+        container.innerHTML = '<p class="empty-state">No products found for this filter.</p>';
+        return;
+    }
+
+    container.innerHTML = filteredItems.map(item => `
         <div class="product-full-card">
             <div class="product-card-hover-icons">
                 <a href="#" class="item-detail-button" title="Quick View"><i data-feather="eye"></i></a>
                 <a href="#" title="Add to Wishlist"><i data-feather="heart"></i></a>
             </div>
             <div class="product-card-img-wrapper">
-                <img src="/${item.image_path}" alt="${item.name}">
+                <img src="${getProductImageSrc(item.image_path)}" alt="${item.name}">
             </div>
             <h3 class="product-full-title">${item.name}</h3>
             <p class="product-full-desc">${item.description}</p>
@@ -281,7 +372,7 @@ function renderProducts(items, container) {
             </div>
             <div class="product-full-footer">
                 <div class="product-price-block">
-                    <span class="product-full-price">$${item.price}</span>
+                    <span class="product-full-price">$${Number(item.price || 0).toFixed(2)}</span>
                 </div>
                 <button class="btn-add-to-cart">
                     <i data-feather="shopping-cart"></i>
