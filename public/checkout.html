@@ -8,11 +8,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./css/checkout.css">
+<link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
 
 <div class="topbar">
-  <div class="brand">Dusk<span>Coffee</span></div>
+  <div class="brand"><a href="/index.html" class="navbar-logo"><span>Dusk</span>Coffee.</a></div>
   <div class="step">Cart &nbsp;→&nbsp; <strong style="color:var(--cream)">Checkout</strong> &nbsp;→&nbsp; Confirmation</div>
 </div>
 
@@ -36,6 +37,17 @@
           <label for="phone">Phone number</label>
           <input type="tel" id="phone" placeholder="08xx xxxx xxxx">
         </div>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="you@example.com">
+      </div>
+      <div class="otp-row">
+        <div class="field otp-field">
+          <label for="otpInput">Verification code</label>
+          <input type="text" id="otpInput" placeholder="6-digit code" maxlength="6">
+        </div>
+        <button type="button" id="sendOtpBtn" class="pay-btn send-otp-btn">Send Code</button>
       </div>
       <div class="field" id="addressField">
         <label for="address">Delivery address</label>
@@ -139,7 +151,7 @@
       </div>
     </div>
 
-    <button class="pay-btn" onclick="placeOrder()">Place Order</button>
+    <button class="pay-btn" id="placeOrderBtn">Place Order</button>
     <p class="lock-note">🔒 Payment details are never stored on this device</p>
 
     <div class="confirm-banner" id="confirmBanner">
