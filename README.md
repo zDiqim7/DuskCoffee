@@ -17,7 +17,7 @@ I followed his project series, but since there are no new updates/videos and it 
 
 - **Fullstack Architecture:** Decoupled static frontend (`public/`) served via Express backend (`src/`).
 - **Dynamic Catalog:** Menu (food & beverages) and Products (coffee beans & merch) rendered dynamically via Express REST API and MariaDB.
-- **Custom Authentication UI:** Single-page Sign In & Sign Up interface ready for JWT auth integration.
+- **Guest Checkout:** Customers verify their email with a one-time code before placing an order.
 - **Interactive Shopping Cart:** Slide-out cart panel with empty state placeholder, scrollable item list, and sticky checkout footer.
 - **Responsive & Modular Design:** Dark coffee-themed UI built with custom CSS variables (`:root`), Flexbox/Grid, and Feather Icons.
 
@@ -31,8 +31,7 @@ I followed his project series, but since there are no new updates/videos and it 
 **Backend & Database:**
 - Node.js & Express.js (REST API, Static File Serving)
 - MariaDB / MySQL (using `mysql2/promise` connection pool, 1 schema file)
-- `bcryptjs` (Password Hashing)
-- `jsonwebtoken` (JWT Authentication)
+- `resend` or `nodemailer` (OTP email delivery)
 - `dotenv` (Environment Variable Management)
 
 ---
@@ -61,7 +60,6 @@ or just copy (click if it can) this url and paste to ur browser
 
 [x] Build dynamic API routes (GET /api/products/menu & /beans).
 
-[ ] Connect auth.html frontend forms to Express auth API with JWT token handling.
 
 [ ] Implement localStorage basket state for persistent shopping cart item management.
 
