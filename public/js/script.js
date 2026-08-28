@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function renderMenu(items, container) {
     if (!items || items.length === 0) return;
     container.innerHTML = items.map(item => `
-        <div class="menu-full-card">
+        <div class="menu-full-card" data-item-id="${item.id}" data-item-type="menu">
             <div class="menu-card-img-wrapper">
                 <img src="/${item.image_path}" alt="${item.name}">
             </div>
@@ -247,7 +247,7 @@ function renderCart() {
         `;
     } else {
         cartItemsContainer.innerHTML = cartItems.map(item => `
-            <div class="cart-item" data-cart-id="${item.id}">
+            <div class="cart-item" data-cart-id="${item.item_type}:${item.id}">
                 ${item.image ? `<img src="${item.image}" alt="${item.name}">` : ''}
                 <div class="item-details">
                     <h3>${item.name}</h3>
@@ -280,13 +280,18 @@ function buildCartItemData(card) {
 
     if (!name || !price) return null;
 
-    const id = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    const id = Number(card.dataset.itemId);
+    const itemType = card.dataset.itemType;
 
-    return { id, name, price, image, quantity: 1 };
+    if (!Number.isInteger(id) || !['menu', 'product'].includes(itemType)) return null;
+
+    return { id, item_type: itemType, name, price, image, quantity: 1 };
 }
 
 function addToCart(item) {
-    const existingItem = cartItems.find(cartItem => cartItem.id === item.id);
+    const existingItem = cartItems.find(cartItem => (
+        cartItem.id === item.id && cartItem.item_type === item.item_type
+    ));
     if (existingItem) {
         existingItem.quantity += 1;
     } else {
@@ -296,8 +301,8 @@ function addToCart(item) {
     renderCart();
 }
 
-function removeFromCart(itemId) {
-    cartItems = cartItems.filter(item => item.id !== itemId);
+function removeFromCart(cartItemKey) {
+    cartItems = cartItems.filter(item => `${item.item_type}:${item.id}` !== cartItemKey);
     saveCart();
     renderCart();
 }
@@ -353,7 +358,7 @@ function renderProducts(items, container, filterName = 'all') {
     }
 
     container.innerHTML = filteredItems.map(item => `
-        <div class="product-full-card">
+        <div class="product-full-card" data-item-id="${item.id}" data-item-type="product">
             <div class="product-card-hover-icons">
                 <a href="#" class="item-detail-button" title="Quick View"><i data-feather="eye"></i></a>
                 <a href="#" title="Add to Wishlist"><i data-feather="heart"></i></a>

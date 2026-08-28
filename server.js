@@ -1,4 +1,3 @@
-// 1. Import Module Utama
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config(); // Read secret variable from .env
@@ -18,7 +17,7 @@ const productRoutes = require('./src/routes/products');
 const ordersRoutes = require('./src/routes/orders');
 
 // Use Routes (Set URL utamanya)
-app.use('/api/auth', authRoutes);         // Hasilnya: /api/auth/login, /api/auth/register
+app.use('/api/auth', authRoutes);         // Guest checkout OTP endpoints
 app.use('/api/products', productRoutes);   // Hasilnya: /api/products (ambil menu kopi)
 app.use('/api/orders', ordersRoutes);     // Hasilnya: /api/orders (simpan pesanan)
 

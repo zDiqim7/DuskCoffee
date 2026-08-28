@@ -132,7 +132,6 @@ async function placeOrder() {
     customer_name: customerName,
     customer_phone: customerPhone,
     customer_email: customerEmail,
-    phone: customerPhone,
     address: document.getElementById('address')?.value || null,
     notes: document.getElementById('notes')?.value || null,
     mode,
@@ -164,7 +163,7 @@ async function placeOrder() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  renderCheckout();
+  setMode('pickup');
   const sendOtpBtn = document.getElementById('sendOtpBtn');
   const placeOrderBtn = document.getElementById('placeOrderBtn');
 
