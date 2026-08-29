@@ -6,7 +6,29 @@ const { Resend } = require('resend');
 const contactToEmail = process.env.CONTACT_TO_EMAIL || 'quantum99q@gmail.com';
 
 const sendContactEmail = async (name, email, phone, message, rating) => {
-  // Priority 1: Nodemailer (Gmail SMTP)
+  // Priority 1: Resend (works on Railway)
+  const resendApiKey = process.env.RESEND_API_KEY;
+  if (resendApiKey) {
+    const resend = new Resend(resendApiKey);
+    await resend.emails.send({
+      from: 'onboarding@resend.dev',
+      to: [contactToEmail],
+      replyTo: email,
+      subject: `New contact message from ${name}`,
+      html: `
+        <h3>New message from DuskCoffee website</h3>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone || '-'}</p>
+        <p><strong>Rating:</strong> ${rating || '-'}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message}</p>
+      `,
+    });
+    return;
+  }
+
+  // Fallback: Nodemailer (Gmail SMTP for local development)
   if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASSWORD) {
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
@@ -36,29 +58,7 @@ const sendContactEmail = async (name, email, phone, message, rating) => {
     return;
   }
 
-  // Fallback: Resend
-  const resendApiKey = process.env.RESEND_API_KEY;
-  if (resendApiKey) {
-    const resend = new Resend(resendApiKey);
-    await resend.emails.send({
-      from: 'onboarding@resend.dev',
-      to: [contactToEmail],
-      replyTo: email,
-      subject: `New contact message from ${name}`,
-      html: `
-        <h3>New message from DuskCoffee website</h3>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone || '-'}</p>
-        <p><strong>Rating:</strong> ${rating || '-'}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
-      `,
-    });
-    return;
-  }
-
-  throw new Error('No email service configured (SMTP or Resend)');
+  throw new Error('No email service configured (Resend or SMTP)');
 };
 
 router.post('/', async (req, res) => {
