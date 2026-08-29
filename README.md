@@ -18,10 +18,10 @@ I followed his project series, but since the tutorial series stopped before reac
 
 - **Live Web App:** [https://duskcoffee-production.up.railway.app](https://duskcoffee-production.up.railway.app)
 - **Frontend Pages (GitHub Pages static preview):**
-  - [Index Page](https://zdiqim7.github.io/DuskCoffee/public/index.html)
-  - [Menu Page](https://zdiqim7.github.io/DuskCoffee/public/menu.html)
-  - [Products Page](https://zdiqim7.github.io/DuskCoffee/public/products.html)
-  - [Checkout Page](https://zdiqim7.github.io/DuskCoffee/public/checkout.html)
+  - [Index Page](https://duskcoffee-production.up.railway.app/index.html)
+  - [Menu Page](https://duskcoffee-production.up.railway.app/menu.html)
+  - [Products Page](https://duskcoffee-production.up.railway.app/products.html)
+  - [Checkout Page](https://duskcoffee-production.up.railway.app/checkout.html)
 
 ---
 
