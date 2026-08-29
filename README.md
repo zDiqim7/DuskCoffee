@@ -1,71 +1,101 @@
 # DuskCoffee
 
-Simple, static coffee shop website built as a practice project. This repo is a work-in-progress — currently a static build using HTML, CSS, and a bit of JavaScript. I plan to keep updating and making it more complex as I learn new tools and techniques.
+Simple coffee shop website built as a practice project. This repo evolved from a simple static build into a full-stack web application featuring dynamic catalog rendering, guest checkout, and cloud database integration.
 
 ## About
 
-DuskCoffee is a small practice project to build a simple website for a coffee shop. The goal is to practice front-end fundamentals (layout, styling, responsive design, small JS interactions) and to create something that can be shipped and iterated on.
+DuskCoffee is a practice project aimed at mastering full-stack web development fundamentals—ranging from frontend UI layout and DOM manipulation to RESTful API design, database schemas, and cloud deployment.
 
-Inspired by `WPU (Web Programming Unpas)`, or as known in the community as Mr. Sandhika Galih.
+Inspired by **WPU (Web Programming Unpas)**, hosted by Pak Sandhika Galih.
+Check out his original tutorial playlist:
+> [Membuat WEBSITE Kedai Kopi RESPONSIVE - WPU Playlist](https://youtu.be/kvyJPvJKTBI?si=1Ja-VCTyIJdvF-WC)
 
-Check out this playlist: 
- > https://youtu.be/kvyJPvJKTBI?si=1Ja-VCTyIJdvF-WC 
+I followed his project series, but since the tutorial series stopped before reaching full backend/database integration, I decided to take this project further by building a custom Express.js backend, relational database, and deploying it live.
 
-I followed his project series, but since there are no new updates/videos and it stopped at the payment gateway feature, I decided to take this project further.
+---
 
-## Current features
+## Live Preview & Deployment
 
-- **Fullstack Architecture:** Decoupled static frontend (`public/`) served via Express backend (`src/`).
-- **Dynamic Catalog:** Menu (food & beverages) and Products (coffee beans & merch) rendered dynamically via Express REST API and MariaDB.
-- **Guest Checkout:** Customers verify their email with a one-time code before placing an order.
-- **Interactive Shopping Cart:** Slide-out cart panel with empty state placeholder, scrollable item list, and sticky checkout footer.
-- **Responsive & Modular Design:** Dark coffee-themed UI built with custom CSS variables (`:root`), Flexbox/Grid, and Feather Icons.
+- **Live Web App:** [https://duskcoffee-production.up.railway.app](https://duskcoffee-production.up.railway.app)
+- **Frontend Pages (GitHub Pages static preview):**
+  - [Index Page](https://zdiqim7.github.io/DuskCoffee/public/index.html)
+  - [Menu Page](https://zdiqim7.github.io/DuskCoffee/public/menu.html)
+  - [Products Page](https://zdiqim7.github.io/DuskCoffee/public/products.html)
+  - [Checkout Page](https://zdiqim7.github.io/DuskCoffee/public/checkout.html)
 
-## Tech stack
+---
+
+## Current Features
+
+- **Fullstack Architecture:** Decoupled static frontend (`public/`) served via Express.js backend (`src/`) with dynamic environment handling.
+- **Dynamic Catalog API:** Menu items (pastries, beverages, food) and Products (coffee beans) fetched dynamically from a live Cloud MySQL database via REST endpoints (`/api/products/menu` & `/api/products/beans`).
+- **Guest Checkout Schema:** Relational database setup (`orders` and `order_items` tables with proper Foreign Key & Check constraints) allowing customers to order without registering an account.
+- **Interactive Shopping Cart:** Slide-out cart panel with real-time DOM updates, item list tracking, and checkout routing.
+- **Responsive Dark Theme UI:** Built using CSS custom variables (`:root`), Flexbox, Grid, and Feather Icons.
+
+---
+
+## Tech Stack
 
 **Frontend:**
 - HTML5 & CSS3 (Custom Variables, Flexbox, Grid)
-- Vanilla JavaScript (Fetch API, DOM Manipulation, Event Delegation)
+- Vanilla JavaScript (Fetch API, DOM Manipulation, Async/Await)
 - Feather Icons
 
-**Backend & Database:**
-- Node.js & Express.js (REST API, Static File Serving)
-- MariaDB / MySQL (using `mysql2/promise` connection pool, 1 schema file)
-- `resend` or `nodemailer` (OTP email delivery)
-- `dotenv` (Environment Variable Management)
+**Backend & Infrastructure:**
+- **Node.js & Express.js:** RESTful API & Static file server
+- **Database:** MariaDB / MySQL (`mysql2/promise` connection pool)
+- **Cloud Hosting & Deployment:** 
+  - **Railway:** Express backend service (Live with SSL)
+  - **Aiven Cloud:** Managed MySQL Database
+- **Environment Management:** `dotenv`
 
 ---
 
-## How to run locally
-nah u dont need to, just wait me complete this **** backend so i can deploy on resend.com
+## How to Run Locally
 
-but u can still see the preview oh the html page, just change/add the name of the file html `https://zdiqim7.github.io/DuskCoffee/public/name.html`
+If you want to run and test the project locally on your machine:
 
-or just copy (click if it can) this url and paste to ur browser
-> https://zdiqim7.github.io/DuskCoffee/public/index.html
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/zDiqim7/DuskCoffee.git](https://github.com/zDiqim7/DuskCoffee.git)
+   cd DuskCoffee
 
-> https://zdiqim7.github.io/DuskCoffee/public/menu.html
+2. **Install depedencies:**
+   ```bash
+   npm install
 
-> https://zdiqim7.github.io/DuskCoffee/public/products.html
+3. **Set up environment variables:** 
 
-> https://zdiqim7.github.io/DuskCoffee/public/checkout.html
+   create .env file in the root directory
+   ```bash
+    PORT=3000
+    NODE_ENV=development
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_USER=your_db_user
+    DB_PASSWORD=your_db_password
+    DB_NAME=duskcoffee_db 
+
+4. **Import database schema & seed:**
+    ```bash
+    mariadb -h 127.0.0.1 -u your_db_user -p duskcoffee_db < schema.sql
+    mariadb -h 127.0.0.1 -u your_db_user -p duskcoffee_db < seed.sql
+
+5. **Start the local server:**
+   ```bash
+   npm start
 
 ---
 
-## Future plans/roadmap
+## Might do later
+1. Email OTP Verification MechanismCurrent Status: Temporarily disabled.Future Idea: Swapping Resend for Nodemailer with Gmail App Passwords so guests can actually get their verification codes... if I feel like setting up SMTP again.
 
-[x] Migrate static layout into Express static server structure.
+2. Order Queue & Confirmation FlowCurrent Status: The database saves transactions fine, but the post-checkout experience is pretty plain right now.Future Idea: Adding a real-time order queue screen (pending $\rightarrow$ paid $\rightarrow$ completed) and an instant digital receipt, assuming I don't get distracted by another project.
 
-[x] Set up local MariaDB schema for menu and products.
+3. Contact Form MailerCurrent Status: The UI form looks nice, but submit doesn't send anything yet.Future Idea: Hooking it up to the mailer service whenever I get around to fixing the email pipeline.
 
-[x] Build dynamic API routes (GET /api/products/menu & /beans).
-
-
-[ ] Implement localStorage basket state for persistent shopping cart item management.
-
-[ ] Deploy Fullstack App (Frontend static via Render/Vercel, Express API via Render/Railway, Database via Aiven/Railway
-
-Note: when I integrate frameworks or a backend, how you preview the project will change (from opening files to running a dev server or visiting a deployed site). That's fine — it will be part of the learning process.
+4. Nodemailer in Express routes for OTP, Auto-clear the localStorage cart after checkout and Call it a day and grab an actual coffee.
 
 ## Contributing
 
