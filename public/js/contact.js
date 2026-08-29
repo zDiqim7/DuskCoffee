@@ -1,9 +1,9 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.querySelector('#contact-form');
-  if (!form) return;
-
+// Attach form submission handler
+const form = document.querySelector('#contact-form');
+if (form) {
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
+    console.log('Contact form submitted');
 
     const payload = {
       name: document.querySelector('#contact-name')?.value?.trim(),
@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
       rating: document.querySelector('#contact-rating')?.value || '',
       message: document.querySelector('#contact-message')?.value?.trim(),
     };
+
+    console.log('Payload:', payload);
 
     if (!payload.name || !payload.email || !payload.message) {
       alert('Name, email, and message are required.');
@@ -28,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       const result = await response.json();
+      console.log('Response:', result);
 
       if (!response.ok) {
         throw new Error(result.message || 'Unable to send message.');
@@ -40,4 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
       alert(error.message || 'Failed to send message.');
     }
   });
-});
+} else {
+  console.error('Contact form not found!');
+}
