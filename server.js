@@ -15,11 +15,13 @@ app.use('/api/products', require('./src/routes/products')); // Calling endpoint 
 const authRoutes = require('./src/routes/auth');
 const productRoutes = require('./src/routes/products');
 const ordersRoutes = require('./src/routes/orders');
+const contactRoutes = require('./src/routes/contact');
 
 // Use Routes (Set URL utamanya)
 app.use('/api/auth', authRoutes);         // Guest checkout OTP endpoints
 app.use('/api/products', productRoutes);   // Hasilnya: /api/products (ambil menu kopi)
 app.use('/api/orders', ordersRoutes);     // Hasilnya: /api/orders (simpan pesanan)
+app.use('/api/contact', contactRoutes);   // Contact form email endpoint
 
 // RUN Server Express-Kawai ><
 app.listen(PORT, () => {

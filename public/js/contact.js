@@ -1,41 +1,43 @@
-const express = require('express');
-const router = express.Router();
-const { Resend } = require('resend');
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.querySelector('#contact-form');
+  if (!form) return;
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
 
-router.post('/', async (req, res) => {
-  const { name, email, phone, message } = req.body;
-  
-  if (!name || !email || !message) {
-    return res.status(400).json({ message: 'Name, email, and message are required!' });
-  }
+    const payload = {
+      name: document.querySelector('#contact-name')?.value?.trim(),
+      email: document.querySelector('#contact-email')?.value?.trim(),
+      phone: document.querySelector('#contact-phone')?.value?.trim(),
+      rating: document.querySelector('#contact-rating')?.value || '',
+      message: document.querySelector('#contact-message')?.value?.trim(),
+    };
 
-  try {
-    const data = await resend.emails.send({
-      from: 'onboarding@resend.dev',
-      to: 'quantum99q@gmail.com',
-      subject: `Hello World! from ${name}`,
-      html: `
-      <h3>New Message from Contact Form!</h3>
-        <p><b>Name:</b> ${name}</p>
-        <p><b>Email from:</b> ${email}</p>
-        <p><b>Phone:</b> ${phone || '-'}</p>
-        <p><b>Message:</b></p>
-        <p>${message}</p>
-      `
-    });
+    if (!payload.name || !payload.email || !payload.message) {
+      alert('Name, email, and message are required.');
+      return;
+    }
 
-    res.status(200).json({ message: 'Message sent!', data });
-  } catch (error) {
-    console.error('Error Resend:', error);
-    res.status(500).json({ message: 'Failed to send message', error: error.message });
-  }
-});
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
 
-module.exports = router;
+      const result = await response.json();
 
-const sendButton = document.querySelector('#contact-form .btn');
-sendButton.addEventListener('click', async (event) => {
-  event.preventDefault();
+      if (!response.ok) {
+        throw new Error(result.message || 'Unable to send message.');
+      }
+
+      alert('Message sent successfully!');
+      form.reset();
+    } catch (error) {
+      console.error('Contact form error:', error);
+      alert(error.message || 'Failed to send message.');
+    }
+  });
 });
