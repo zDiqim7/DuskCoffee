@@ -13,7 +13,7 @@ const sendOtpEmail = async (email, otp) => {
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT || 587),
-      secure: false,
+      secure: false, // TLS
       auth: {
         user: smtpUser,
         pass: smtpPassword,
@@ -21,6 +21,10 @@ const sendOtpEmail = async (email, otp) => {
       tls: {
         rejectUnauthorized: false,
       },
+      // Tambahkan timeout agar tidak hang dan menyebabkan Network Error di browser
+      connectionTimeout: 10000, // 10 detik
+      greetingTimeout: 5000,
+      socketTimeout: 10000,
     });
 
     try {
