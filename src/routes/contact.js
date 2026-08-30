@@ -34,28 +34,40 @@ const sendContactEmail = async (name, email, phone, message, rating) => {
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT || 587),
       secure: false,
+      family: 4,
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASSWORD,
       },
+      tls: {
+        rejectUnauthorized: false,
+      },
+      connectionTimeout: 10000,
+      greetingTimeout: 5000,
+      socketTimeout: 10000,
     });
 
-    await transporter.sendMail({
-      from: `${name} <${process.env.SMTP_USER}>`,
-      to: contactToEmail,
-      replyTo: email,
-      subject: `New contact message from ${name}`,
-      html: `
-        <h3>New message from DuskCoffee website</h3>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone || '-'}</p>
-        <p><strong>Rating:</strong> ${rating || '-'}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
-      `,
-    });
-    return;
+    try {
+      await transporter.sendMail({
+        from: `"DuskCoffee Development" <${process.env.SMTP_USER}>`,
+        to: contactToEmail,
+        replyTo: email,
+        subject: `New contact message from ${name}`,
+        html: `
+          <h3>New message from DuskCoffee website</h3>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Phone:</strong> ${phone || '-'}</p>
+          <p><strong>Rating:</strong> ${rating || '-'}</p>
+          <p><strong>Message:</strong></p>
+          <p>${message}</p>
+        `,
+      });
+      return;
+    } catch (error) {
+      console.error('Gmail SMTP contact mail failed:', error);
+      throw error;
+    }
   }
 
   throw new Error('No email service configured (Resend or SMTP)');

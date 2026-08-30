@@ -14,6 +14,7 @@ const sendOtpEmail = async (email, otp) => {
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT || 587),
       secure: false, // TLS
+      family: 4,
       auth: {
         user: smtpUser,
         pass: smtpPassword,
