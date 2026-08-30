@@ -89,11 +89,11 @@ If you want to run and test the project locally on your machine:
 ---
 
 ## Might do later
-1. Email OTP Verification MechanismCurrent Status: Temporarily disabled.Future Idea: Swapping Resend for Nodemailer with Gmail App Passwords so guests can actually get their verification codes... if I feel like setting up SMTP again.
+1. ~~Email OTP Verification MechanismCurrent Status: Temporarily disabled.Future Idea: Swapping Resend for Nodemailer with Gmail App Passwords so guests can actually get their verification codes... if I feel like setting up SMTP again.~~
 
 2. Order Queue & Confirmation FlowCurrent Status: The database saves transactions fine, but the post-checkout experience is pretty plain right now.Future Idea: Adding a real-time order queue screen (pending $\rightarrow$ paid $\rightarrow$ completed) and an instant digital receipt, assuming I don't get distracted by another project.
 
-3. Contact Form MailerCurrent Status: The UI form looks nice, but submit doesn't send anything yet.Future Idea: Hooking it up to the mailer service whenever I get around to fixing the email pipeline.
+3. ~~Contact Form MailerCurrent Status: The UI form looks nice, but submit doesn't send anything yet.Future Idea: Hooking it up to the mailer service whenever I get around to fixing the email pipeline.~~
 
 4. Nodemailer in Express routes for OTP, Auto-clear the localStorage cart after checkout and Call it a day and grab an actual coffee.
 
