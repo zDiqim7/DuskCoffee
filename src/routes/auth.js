@@ -4,39 +4,53 @@ const { setOtp, getOtp, deleteOtp } = require('../config/otpStore');
 
 const sendOtpEmail = async (email, otp) => {
   const emailTo = String(email || '').trim();
+  const smtpUser = process.env.SMTP_USER;
+  const smtpPassword = process.env.SMTP_PASSWORD || process.env.SMTP_PASS;
 
-  // Priority 1: Resend (works on Railway)
-  if (process.env.RESEND_API_KEY) {
-    const { Resend } = require('resend');
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    await resend.emails.send({
-      from: 'onboarding@resend.dev',
-      to: [emailTo],
-      subject: 'DuskCoffee verification code',
-      html: `<p>Your DuskCoffee verification code is <strong>${otp}</strong>. This code expires in 5 minutes.</p>`,
-    });
-    return;
-  }
-
-  // Fallback: Nodemailer (Gmail SMTP for local development)
-  if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASSWORD) {
+  // Priority 1: Gmail SMTP for local dev / personal mail setup
+  if (process.env.SMTP_HOST && smtpUser && smtpPassword) {
     const nodemailer = require('nodemailer');
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT || 587),
       secure: false,
       auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASSWORD,
+        user: smtpUser,
+        pass: smtpPassword,
+      },
+      tls: {
+        rejectUnauthorized: false,
       },
     });
 
-    await transporter.sendMail({
-      from: process.env.SMTP_USER,
-      to: emailTo,
+    try {
+      const info = await transporter.sendMail({
+        from: `"DuskCoffee Development" <${smtpUser}>`,
+        to: emailTo,
+        subject: 'DuskCoffee verification code',
+        html: `<p>Your DuskCoffee verification code is <strong>${otp}</strong>. This code expires in 5 minutes.</p>`,
+      });
+
+      console.log('OTP email sent via Gmail SMTP:', info.messageId);
+      return;
+    } catch (error) {
+      console.error('Gmail SMTP send failed:', error);
+      throw error;
+    }
+  }
+
+  // Fallback: Resend
+  if (process.env.RESEND_API_KEY) {
+    const { Resend } = require('resend');
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    const response = await resend.emails.send({
+      from: 'onboarding@resend.dev',
+      to: [emailTo],
       subject: 'DuskCoffee verification code',
       html: `<p>Your DuskCoffee verification code is <strong>${otp}</strong>. This code expires in 5 minutes.</p>`,
     });
+
+    console.log('OTP email sent via Resend:', response?.id || 'ok');
     return;
   }
 
