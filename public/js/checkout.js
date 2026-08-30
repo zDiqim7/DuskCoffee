@@ -167,6 +167,42 @@ document.addEventListener('DOMContentLoaded', () => {
   const sendOtpBtn = document.getElementById('sendOtpBtn');
   const placeOrderBtn = document.getElementById('placeOrderBtn');
 
-  if (sendOtpBtn) sendOtpBtn.addEventListener('click', sendOtp);
+  if (sendOtpBtn) {
+    sendOtpBtn.addEventListener('click', async (event) => {
+      event.preventDefault();
+      const emailInput = document.getElementById('email')?.value?.trim();
+
+      if (!emailInput || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput)) {
+        alert('Please enter a valid email address first.');
+        return;
+      }
+
+      sendOtpBtn.disabled = true;
+      sendOtpBtn.innerText = 'Sending...';
+
+      try {
+        const response = await fetch('/api/auth/send-otp', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: emailInput })
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+          throw new Error(result.message || 'Unable to send verification code.');
+        }
+
+        alert('Verification code sent successfully.');
+      } catch (error) {
+        console.error('Send OTP failed:', error);
+        alert(error.message || 'Unable to send verification code. Please try again.');
+      } finally {
+        sendOtpBtn.disabled = false;
+        sendOtpBtn.innerText = 'Send Code';
+      }
+    });
+  }
+
   if (placeOrderBtn) placeOrderBtn.addEventListener('click', placeOrder);
 });
