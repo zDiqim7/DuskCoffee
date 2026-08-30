@@ -7,13 +7,32 @@ const sendOtpEmail = async (email, otp) => {
   const smtpUser = process.env.SMTP_USER;
   const smtpPassword = process.env.SMTP_PASSWORD || process.env.SMTP_PASS;
 
-  // Priority 1: Gmail SMTP for local dev / personal mail setup
+  // Priority 1: Resend API (Gunakan ini untuk Live Production di Railway)
+  if (process.env.RESEND_API_KEY) {
+    try {
+      const { Resend } = require('resend');
+      const resend = new Resend(process.env.RESEND_API_KEY);
+      const response = await resend.emails.send({
+        from: 'onboarding@resend.dev',
+        to: [emailTo],
+        subject: 'DuskCoffee verification code',
+        html: `<p>Your DuskCoffee verification code is <strong>${otp}</strong>. This code expires in 5 minutes.</p>`,
+      });
+
+      console.log('OTP email sent via Resend:', response?.id || 'ok');
+      return;
+    } catch (resendError) {
+      console.error('Resend API failed, falling back to SMTP:', resendError.message);
+    }
+  }
+
+  // Priority 2: Gmail SMTP (Dipakai saat Local Development)
   if (process.env.SMTP_HOST && smtpUser && smtpPassword) {
     const nodemailer = require('nodemailer');
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT || 587),
-      secure: false, // TLS
+      secure: false,
       family: 4,
       auth: {
         user: smtpUser,
@@ -22,8 +41,7 @@ const sendOtpEmail = async (email, otp) => {
       tls: {
         rejectUnauthorized: false,
       },
-      // Tambahkan timeout agar tidak hang dan menyebabkan Network Error di browser
-      connectionTimeout: 10000, // 10 detik
+      connectionTimeout: 10000,
       greetingTimeout: 5000,
       socketTimeout: 10000,
     });
@@ -42,21 +60,6 @@ const sendOtpEmail = async (email, otp) => {
       console.error('Gmail SMTP send failed:', error);
       throw error;
     }
-  }
-
-  // Fallback: Resend
-  if (process.env.RESEND_API_KEY) {
-    const { Resend } = require('resend');
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    const response = await resend.emails.send({
-      from: 'onboarding@resend.dev',
-      to: [emailTo],
-      subject: 'DuskCoffee verification code',
-      html: `<p>Your DuskCoffee verification code is <strong>${otp}</strong>. This code expires in 5 minutes.</p>`,
-    });
-
-    console.log('OTP email sent via Resend:', response?.id || 'ok');
-    return;
   }
 
   console.log(`OTP DEBUG for ${emailTo}: ${otp}`);
