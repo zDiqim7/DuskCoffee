@@ -11,17 +11,17 @@ app.use(express.json()); // Supaya Express bisa membaca data JSON dari frontend/
 app.use(express.static('public')); // Menyajikan HTML, CSS, Gambar dari folder public
 app.use('/api/products', require('./src/routes/products')); // Calling endpoint on products.js
 
-// Import Routes (Panggil file jalur API dari folder src)
+// Import Routes 
 const authRoutes = require('./src/routes/auth');
 const productRoutes = require('./src/routes/products');
 const ordersRoutes = require('./src/routes/orders');
 const contactRoutes = require('./src/routes/contact');
 
-// Use Routes (Set URL utamanya)
+// Use Routes
 app.use('/api/auth', authRoutes);         // Guest checkout OTP endpoints
-app.use('/api/products', productRoutes);   // Hasilnya: /api/products (ambil menu kopi)
-app.use('/api/orders', ordersRoutes);     // Hasilnya: /api/orders (simpan pesanan)
-app.use('/api/contact', contactRoutes);   // Contact form email endpoint
+app.use('/api/products', productRoutes);   // (ambil menu kopi)
+app.use('/api/orders', ordersRoutes);     // (simpan pesanan)
+app.use('/api/contact', contactRoutes);   // Contact form email endpoints
 
 // RUN Server Express-Kawai ><
 app.listen(PORT, () => {
