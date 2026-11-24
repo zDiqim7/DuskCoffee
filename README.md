@@ -2,6 +2,8 @@
 
 A simple fullstack coffee shop website I built to practice backend engineering and cloud deployments.
 
+> https://duskcoffee-production.up.railway.app/#home
+
 ## What it does
 - **Live Menu & Products:** Fetching real coffee beans and menu items directly from a cloud database.
 - **Guest Checkout:** Allows users to pick items, choose pickup or delivery, and complete an order flow.
